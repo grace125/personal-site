@@ -1,12 +1,19 @@
-import Image from "next/image";
+import BlogEntry from "./ui/component/BlogEntry";
+import P from "./ui/component/Paragraph";
+import BlogTitle from "./ui/component/BlogTitle";
+import Section from "./ui/component/Section";
+import A from "./ui/component/Anchor";
 
 export default function Home() {
-  return <>
-    <p>If you are reading this before Monday, I haven't had a chance to finish this site (or at least bring it to a point I'm happy with sharing).</p>
-    <p>I promise soon it'll look better than this, and contain my CV in the form of blog posts.</p>
-    <p>For now, this is a stub.</p>
-  </>
-    
+  return <BlogEntry>
+      <Section>
+        <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Hello!</BlogTitle>
+        <P>This is my website! It's currently under some construction, but it'll be done tomorrow (June 9th), if not Wednesday (the 10th).</P>
+        <P>If you're looking for any of my <b>projects</b>, I'd recommend looking at my <A href="https://github.com/grace125?page=1&tab=repositories">Github</A>!</P>
+        <P>Thank you for your patience.</P>
+      </Section>
+    </BlogEntry>
+              
     /*(
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">

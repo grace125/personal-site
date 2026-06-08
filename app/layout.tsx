@@ -32,8 +32,8 @@ export default function RootLayout({
       <body className={`min-h-full flex flex-col ${courierPrime.className}`}>
         <div className="flex h-screen flex-col lg:flex-row lg:overflow-hidden">
           <SideNav />
-          <div className="grow p-6 lg:overflow-y-auto lg:p-12 shrink">{children}</div>
-          <div className="w-full flex-none lg:w-64 shrink"></div>
+          <div className="grow p-6 lg:overflow-y-auto lg:p-12">{children}</div>
+          <div className="w-full flex-none lg:w-64 shrink-1000000000"></div>
         </div>
       </body>
     </html>

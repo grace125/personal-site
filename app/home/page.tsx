@@ -1,3 +1,5 @@
+import Home from "../page";
+
 export default function Page() {
-  return <p>home, sweet home</p>;
+  return Home();
 }
