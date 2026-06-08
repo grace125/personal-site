@@ -7,7 +7,7 @@ export default function Heading(props: { children: ReactNode }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 1:
-      return <h1 className="text-6xl">{props.children}</h1>;
+      throw new Error("Heading should only be used in a Section");
     case 2:
       return <h2 className="text-5xl">{props.children}</h2>;
     case 3:
