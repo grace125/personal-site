@@ -20,10 +20,12 @@ export default function SideNav() {
                 return <Link 
                     key={link.name}
                     href={link.href}
-                    className={`group flex h-12 grow hover:bg-sky-100 items-center justify-center gap-2 p-3 text-base font-medium hover:text-blue-600 lg:flex-none lg:justify-start lg:p-2 lg:px-3`}
+                    className={`group flex lg:flex-none h-12 grow hover:bg-sky-100 items-center justify-center lg:justify-start gap-2 p-3 lg:p-2 lg:px-3 text-lg font-medium hover:text-blue-600`}
                 >
-                    <link.icon className="w-6"/>
-                    <p className={`${text_style}`}>{link.name}</p>
+                    <div>
+                        <link.icon className="w-[1.5em] inline-block align-middle mr-3"/>
+                        <span className={`${text_style}`}>{link.name}</span>
+                    </div>
                 </Link>
             })}
         </div>

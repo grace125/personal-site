@@ -32,12 +32,12 @@ type TagData = typeof tagData[Tag]
 type Project = { name: string, description: string, href: string, tags: Tag[],  } // date: Date
 
 const projects: Project[] = [
-    { 
-        name: "Desc", 
-        description: "A prototype for a dependently typed programming language, written in Rust; my undergrad honours project.",
-        href: "/projects/desc",
-        tags: ["Software", "Programming Languages", "Prototype"],
-    },
+    // { 
+    //     name: "Desc", 
+    //     description: "A prototype for a dependently typed programming language, written in Rust; my undergrad honours project.",
+    //     href: "/projects/desc",
+    //     tags: ["Software", "Programming Languages", "Prototype"],
+    // },
     {
         name: "Microphone Rhythm Game",
         description: "",
