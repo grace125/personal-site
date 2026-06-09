@@ -9,14 +9,14 @@ export default function Page() {
           <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Who am I?</BlogTitle>
           <P>
             My name is Grace Schorno. I'm a software developer, mathematician, writer, artist, and musician—or, at least I try be all these things.
-            I have a love for art, and how it interacts with math and technology. 
+            I love art, and how it interacts with math and technology. 
           </P>
 
           <P>
             In particular, I love <b>games</b>, and <b>game development</b>! 
           </P>
 
-          <P>I have a project I'm working on that I'm not ready to talk about. But <i>stay tuned!</i></P>
+          <P>I have a project I'm working on that I'm not ready to talk about, so <i>stay tuned!</i></P>
           
         </Section>
       </BlogEntry>;

@@ -41,39 +41,39 @@ const projects: Project[] = [
     {
         name: "Microphone Rhythm Game",
         description: "",
-        href: "",
+        href: "/projects/microphone-rhythm-game",
         tags: ["Software", "Music", "Prototype"]
     },
-    {
-        name: "Discord Room Manager",
-        description: "",
-        href: "",
-        tags: ["Software", "Writing", "Prototype"]
-    },
-    {
-        name: "Winds of Pilgrimage",
-        description: "",
-        href: "",
-        tags: ["Software", "Prototype", "Game Dev"]
-    },
-    {
-        name: "JBall",
-        description: "",
-        href: "/projects/jball",
-        tags: ["Software", "Prototype", "Game Dev"]
-    },
-    {
-        name: "Krampus Launcher",
-        description: "",
-        href: "",
-        tags: ["Software", "Prototype", "Game Dev"]
-    },
-    {
-        name: "100% Free Platformer",
-        description: "",
-        href: "",
-        tags: ["Software", "Prototype", "Game Dev"]
-    }
+    // {
+    //     name: "Discord Room Manager",
+    //     description: "",
+    //     href: "",
+    //     tags: ["Software", "Writing", "Prototype"]
+    // },
+    // {
+    //     name: "Winds of Pilgrimage",
+    //     description: "",
+    //     href: "",
+    //     tags: ["Software", "Prototype", "Game Dev"]
+    // },
+    // {
+    //     name: "JBall",
+    //     description: "",
+    //     href: "/projects/jball",
+    //     tags: ["Software", "Prototype", "Game Dev"]
+    // },
+    // {
+    //     name: "Krampus Launcher",
+    //     description: "",
+    //     href: "",
+    //     tags: ["Software", "Prototype", "Game Dev"]
+    // },
+    // {
+    //     name: "Super Cool Free Platformer",
+    //     description: "",
+    //     href: "/projects/free-platformer",
+    //     tags: ["Software", "Prototype", "Game Dev"]
+    // }
 ]
 
 const pill = (content: JSX.Element, color: string) => {
