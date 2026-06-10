@@ -33,7 +33,7 @@ export default function RootLayout({
         <div className="flex h-screen flex-col lg:flex-row lg:overflow-hidden">
           <SideNav />
           <div className="grow p-6 lg:overflow-y-auto lg:p-12">{children}</div>
-          <div className="w-full flex-none lg:w-64 shrink-1000000000"></div>
+          <div className="w-full flex-none lg:w-80 shrink-1000000000"></div>
         </div>
       </body>
     </html>

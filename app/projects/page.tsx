@@ -44,12 +44,12 @@ const projects: Project[] = [
         href: "/projects/microphone-rhythm-game",
         tags: ["Software", "Music", "Prototype"]
     },
-    // {
-    //     name: "Discord Room Manager",
-    //     description: "",
-    //     href: "",
-    //     tags: ["Software", "Writing", "Prototype"]
-    // },
+    {
+        name: "Discord Room Manager",
+        description: "",
+        href: "/projects/discord-room-manager",
+        tags: ["Software", "Writing", "Prototype"]
+    },
     // {
     //     name: "Winds of Pilgrimage",
     //     description: "",

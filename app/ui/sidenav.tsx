@@ -13,8 +13,8 @@ const links = [
 export default function SideNav() {
     let path = usePathname()
     console.log("aaaa", path)
-    return <div className="w-full flex-none lg:w-64">
-        <div className="block overflow-auto rounded-none lg:rounded-md bg-white border-r-0 border-b-2 border-dashed lg:border-r-2 " > {/* border-r-2 */}
+    return <div className="w-[full-4] flex-none lg:w-76 m-2">
+        <div className="block overflow-auto rounded-md bg-white border-2 border-dashed lg:border-r-2 " > {/* border-r-2 */}
             {links.map((link) => {
                 const text_style = path.startsWith(link.href) ? "bg-yellow-300" : ""
                 return <Link 
