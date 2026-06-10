@@ -6,8 +6,8 @@ import A from "./ui/component/Anchor";
 
 export default function Home() {
   return <BlogEntry>
+      <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Hello!</BlogTitle>
       <Section>
-        <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Hello!</BlogTitle>
         <P>This is my website! It's currently under some construction, but it'll be done tomorrow (June 9th), if not Wednesday (the 10th).</P>
         <P>If you're looking for any of my <b>projects</b>, I'd recommend looking at my <A href="https://github.com/grace125?page=1&tab=repositories">Github</A>!</P>
         <P>Thank you for your patience.</P>
