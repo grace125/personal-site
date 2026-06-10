@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { JSX, ReactElement } from "react";
 import Pill from "../ui/Pill";
+import BlogEntry from "../ui/component/BlogEntry";
+import Section from "../ui/component/Section";
+import Heading from "../ui/component/Heading";
+import P from "../ui/component/Paragraph";
 
 const tagData = {
     Writing: { 
@@ -40,13 +44,13 @@ const projects: Project[] = [
     // },
     {
         name: "Microphone Rhythm Game",
-        description: "",
+        description: "A rhythm game controlled by a real guitar.",
         href: "/projects/microphone-rhythm-game",
         tags: ["Software", "Music", "Prototype"]
     },
     {
         name: "Discord Room Manager",
-        description: "",
+        description: "A Discord bot that uses roles, voice channels, and permissions to simulate rooms in a house.",
         href: "/projects/discord-room-manager",
         tags: ["Software", "Writing", "Prototype"]
     },
@@ -56,12 +60,12 @@ const projects: Project[] = [
     //     href: "",
     //     tags: ["Software", "Prototype", "Game Dev"]
     // },
-    // {
-    //     name: "JBall",
-    //     description: "",
-    //     href: "/projects/jball",
-    //     tags: ["Software", "Prototype", "Game Dev"]
-    // },
+    {
+        name: "JBall",
+        description: "A Breakout clone where the ball grows a mouth and starts talking. ",
+        href: "/projects/jball",
+        tags: ["Software", "Prototype", "Game Dev"]
+    },
     // {
     //     name: "Krampus Launcher",
     //     description: "",
@@ -81,17 +85,22 @@ const pill = (content: JSX.Element, color: string) => {
 }
 
 export default function Page() {
-  return <>
-    <p>These are my projects:</p><br/>
-    {projects.map(project => {
-        return <p key={project.name}>
-            <Link href={project.href} className="text-blue-400 hover:text-blue-200">{project.name}</Link> - {project.description}
-            <br/>
-            {project.tags.map(tag => {
-                const data = tagData[tag]
-                return <Pill label={tag} key={tag} className={`${data.color}`} />
-            })}
-        </p>
-    })}
-  </>;
+  return <BlogEntry>
+    <Section>
+        <Heading>My Projects:</Heading>
+
+        {projects.map(project => {
+            return <P key={project.name}>
+                <Link href={project.href} className="text-blue-400 hover:text-blue-200">{project.name}</Link> - {project.description}
+                {/* <br/> */}
+                {/* {project.tags.map(tag => {
+                    const data = tagData[tag]
+                    return <Pill label={tag} key={tag} className={`${data.color}`} />
+                })} */}
+            </P>
+        })}
+    </Section>
+    
+    
+  </BlogEntry>;
 }

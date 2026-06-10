@@ -30,7 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col ${courierPrime.className}`}>
-        <div className="flex h-screen flex-col lg:flex-row lg:overflow-hidden">
+        <div className="flex h-screen flex-col lg:flex-row lg:overflow-hidden text-xl lg:text-lg">
           <SideNav />
           <div className="grow p-6 lg:overflow-y-auto lg:p-12">{children}</div>
           <div className="w-full flex-none lg:w-80 shrink-1000000000"></div>
