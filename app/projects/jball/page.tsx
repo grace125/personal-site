@@ -5,7 +5,6 @@ import ItchEmbed from "@/app/ui/component/ItchEmbed";
 import P from "@/app/ui/component/Paragraph";
 import Section from "@/app/ui/component/Section";
 
-
 export default function Page() {
     return <>
         <BlogEntry>

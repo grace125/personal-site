@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { courierPrime } from "./ui/fonts";
 import SideNav from '@/app/ui/sidenav';
+import katex from "katex";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

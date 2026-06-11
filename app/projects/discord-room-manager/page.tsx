@@ -38,7 +38,7 @@ export default function Page() {
                     When you have the "entrance" role, you can see all rooms next to the entrance. You can also see an "entrance" text chat, with some flavor text and maybe an image.
                 </P>
                 <P>
-                    My brother wrote this flavor text, and we found that it did a fantastic job at encouraging ttendants to spread out! 
+                    My brother wrote this flavor text, and we found that it did a fantastic job at encouraging attendants to spread out! 
                     Before we knew it, there were small pockets of conversation in rooms people probably shouldn't have been in; 
                     there was crowding in hallways we had to break up (the voicechat had a max of 3 people, so nobody could get by); 
                     and there was casual movement between groups, especially people popping in to say hello to the birthday boy. All in all, it was a success!
