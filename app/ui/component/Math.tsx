@@ -1,7 +1,7 @@
 'use client';
 import renderMathInElement from 'katex/contrib/auto-render';
 import 'katex/dist/katex.min.css';
-import MacroExpander from 'katex/src/MacroExpander.js';
+// import MacroExpander from 'katex/src/MacroExpander.js';
 import { DetailedHTMLProps, HTMLAttributes, ReactNode, RefObject, useEffect, useRef } from 'react';
 
 // See https://katex.org/docs/options and https://katex.org/docs/supported.html
