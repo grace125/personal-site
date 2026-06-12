@@ -90,7 +90,7 @@ export default function Page() {
     <Section>
         {projects.map(project => {
             return <P hang key={project.name}>
-                <A href={project.href}>{project.name}</A> - {project.description}
+                <A rel href={project.href}>{project.name}</A> - {project.description}
                 {/* <br/> */}
                 {/* {project.tags.map(tag => {
                     const data = tagData[tag]

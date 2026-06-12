@@ -6,9 +6,12 @@ import A from "./ui/component/Anchor";
 export default function Home() {
   return <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Hello!">
       <Section>
-        <P>This is my website! It's currently under some construction, but it'll be done tomorrow (June 9th), if not Wednesday (the 10th).</P>
-        <P>If you're looking for any of my <b>projects</b>, I'd recommend looking at my <A href="https://github.com/grace125?page=1&tab=repositories">Github</A>!</P>
-        <P>Thank you for your patience.</P>
+        <P noindent>
+          This is my website! 
+          It's not much at the moment, but I have big plans for it.
+        </P>
+        <P>If you're looking for any of my <b>projects</b>, I'd recommend you head <A href="/projects">here</A>, and if you want to know more about <b>me</b> I'd suggest you go <A href="/projects">here</A>!</P>
+        <P>Have a great day!</P>
       </Section>
     </BlogEntry>
               
