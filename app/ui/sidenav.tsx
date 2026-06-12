@@ -12,15 +12,14 @@ const links = [
 
 export default function SideNav() {
     let path = usePathname()
-    console.log("aaaa", path)
     return <div className="w-[full-4] flex-none lg:w-76 m-2">
-        <div className="block overflow-auto rounded-md bg-white dark:bg-black border-2 border-dashed dark:border-white lg:border-r-2 " > {/* border-r-2 */}
+        <div className="block overflow-auto rounded-md bg-background-2 border-2 border-dashed border-foreground-2 lg:border-r-2" > {/* border-r-2 */}
             {links.map((link) => {
-                const text_style = path.startsWith(link.href) ? "bg-yellow-300 dark:bg-purple-700" : ""
+                const text_style = path.startsWith(link.href) ? "bg-highlight" : ""
                 return <Link 
                     key={link.name}
                     href={link.href}
-                    className={`group flex lg:flex-none h-12 grow hover:bg-sky-100 items-center justify-center lg:justify-start gap-2 p-3 lg:p-2 lg:px-3 text-lg font-medium hover:text-blue-600`}
+                    className={`group flex lg:flex-none h-12 grow hover:bg-sidenav-hover hover:hyperlink items-center justify-center lg:justify-start gap-2 p-3 lg:p-2 lg:px-3 text-lg font-medium`}
                 >
                     <div>
                         <link.icon className="w-[1.5em] inline-block align-middle mr-3"/>
@@ -30,5 +29,4 @@ export default function SideNav() {
             })}
         </div>
     </div>
-        
 }

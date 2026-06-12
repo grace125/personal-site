@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { JSX, ReactElement } from "react";
 import Pill from "../ui/Pill";
-import BlogEntry from "../ui/component/BlogEntry";
-import Section from "../ui/component/Section";
+import BlogEntry from "../ui/component/document/BlogEntry";
+import Section from "../ui/component/sections/Section";
 import Heading from "../ui/component/Heading";
 import P from "../ui/component/Paragraph";
+import A from "../ui/component/Anchor";
 
 const tagData = {
     Writing: { 
@@ -88,8 +89,8 @@ export default function Page() {
   return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
     <Section>
         {projects.map(project => {
-            return <P hangindent key={project.name}>
-                <Link href={project.href} className="text-blue-400 hover:text-blue-200">{project.name}</Link> - {project.description}
+            return <P hang key={project.name}>
+                <A href={project.href}>{project.name}</A> - {project.description}
                 {/* <br/> */}
                 {/* {project.tags.map(tag => {
                     const data = tagData[tag]

@@ -1,6 +1,6 @@
-import BlogEntry from "./ui/component/BlogEntry";
+import BlogEntry from "./ui/component/document/BlogEntry";
 import P from "./ui/component/Paragraph";
-import Section from "./ui/component/Section";
+import Section from "./ui/component/sections/Section";
 import A from "./ui/component/Anchor";
 
 export default function Home() {

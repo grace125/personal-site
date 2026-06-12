@@ -1,8 +1,8 @@
-import BlogEntry from "@/app/ui/component/BlogEntry";
+import BlogEntry from "@/app/ui/component/document/BlogEntry";
 import Heading from "@/app/ui/component/Heading";
-import ItchEmbed from "@/app/ui/component/ItchEmbed";
+import ItchLink from "@/app/ui/component/ItchLink";
 import P from "@/app/ui/component/Paragraph";
-import Section from "@/app/ui/component/Section";
+import Section from "@/app/ui/component/sections/Section";
 
 
 export default function Page() {

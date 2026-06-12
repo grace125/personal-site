@@ -1,8 +1,8 @@
 import A from "@/app/ui/component/Anchor";
-import BlogEntry from "@/app/ui/component/BlogEntry";
+import BlogEntry from "@/app/ui/component/document/BlogEntry";
 import Heading from "@/app/ui/component/Heading";
 import P from "@/app/ui/component/Paragraph";
-import Section from "@/app/ui/component/Section";
+import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.gif';
 

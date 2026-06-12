@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useContext } from 'react';
-import { LevelContext } from './LevelContext';
+import { LevelContext } from './sections/LevelContext';
 
 export default function Heading(props: { children: ReactNode }) {
   const level = useContext(LevelContext);

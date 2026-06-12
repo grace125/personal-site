@@ -45,7 +45,7 @@ export default function Math(props: DetailedHTMLProps<HTMLAttributes<HTMLDivElem
   }, [props.children]);
 
   return (
-    <div ref={katexTextRef} {...props}>
+    <div className='text-foreground/70' ref={katexTextRef} {...props}>
       {props.children}
     </div>
   );

@@ -1,6 +1,6 @@
-import BlogEntry from "../ui/component/BlogEntry";
+import BlogEntry from "../ui/component/document/BlogEntry";
 import P from "../ui/component/Paragraph";
-import Section from "../ui/component/Section";
+import Section from "../ui/component/sections/Section";
 
 export default function Page() {
   return <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Who am I?">
