@@ -5,6 +5,7 @@ import BlogEntry from "../ui/component/BlogEntry";
 import Section from "../ui/component/Section";
 import Heading from "../ui/component/Heading";
 import P from "../ui/component/Paragraph";
+import BlogTitle from "../ui/component/BlogTitle";
 
 const tagData = {
     Writing: { 
@@ -86,9 +87,8 @@ const pill = (content: JSX.Element, color: string) => {
 
 export default function Page() {
   return <BlogEntry>
+    <BlogTitle date={new Date("June 12th, 2026")} author="Grace Schorno">My Projects:</BlogTitle>
     <Section>
-        <Heading>My Projects:</Heading>
-
         {projects.map(project => {
             return <P key={project.name}>
                 <Link href={project.href} className="text-blue-400 hover:text-blue-200">{project.name}</Link> - {project.description}
