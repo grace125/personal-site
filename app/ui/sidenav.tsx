@@ -14,9 +14,9 @@ export default function SideNav() {
     let path = usePathname()
     console.log("aaaa", path)
     return <div className="w-[full-4] flex-none lg:w-76 m-2">
-        <div className="block overflow-auto rounded-md bg-white border-2 border-dashed lg:border-r-2 " > {/* border-r-2 */}
+        <div className="block overflow-auto rounded-md bg-white dark:bg-black border-2 border-dashed dark:border-white lg:border-r-2 " > {/* border-r-2 */}
             {links.map((link) => {
-                const text_style = path.startsWith(link.href) ? "bg-yellow-300" : ""
+                const text_style = path.startsWith(link.href) ? "bg-yellow-300 dark:bg-purple-700" : ""
                 return <Link 
                     key={link.name}
                     href={link.href}
