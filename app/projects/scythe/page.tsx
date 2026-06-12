@@ -1,6 +1,5 @@
 import A from "@/app/ui/component/Anchor";
 import BlogEntry from "@/app/ui/component/BlogEntry";
-import BlogTitle from "@/app/ui/component/BlogTitle";
 import Heading from "@/app/ui/component/Heading";
 import ItchEmbed from "@/app/ui/component/ItchEmbed";
 import Math from "@/app/ui/component/Math";
@@ -10,8 +9,7 @@ import _katex from "katex"
 
 export default function Page() {
     return <>
-        <BlogEntry>
-            <BlogTitle author="Grace Schorno" date={new Date("June 9th, 2026")}>Scythe</BlogTitle> 
+        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Scythe">
             <Section>
                 <P>
                     A prototype for a dependently typed <A href="https://github.com/grace125/scythe">programming language</A>; my undergrad honours project.

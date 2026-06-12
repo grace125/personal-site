@@ -1,6 +1,5 @@
 import A from "@/app/ui/component/Anchor";
 import BlogEntry from "@/app/ui/component/BlogEntry";
-import BlogTitle from "@/app/ui/component/BlogTitle";
 import Heading from "@/app/ui/component/Heading";
 import P from "@/app/ui/component/Paragraph";
 import Section from "@/app/ui/component/Section";
@@ -10,8 +9,7 @@ import image1 from './image-1.gif';
 
 export default function Page() {
     return <>
-        <BlogEntry>
-            <BlogTitle author="Grace Schorno" date={new Date("June 9th, 2026")}>Discord Room Manager</BlogTitle>
+        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Discord Room Manager">
             <P>
                 A <A href="https://github.com/grace125/discord-room-manager">Discord bot</A> that uses roles, voice channels, and permissions to simulate rooms in a house.
             </P>

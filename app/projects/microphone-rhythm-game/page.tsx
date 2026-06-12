@@ -1,6 +1,5 @@
 import A from "@/app/ui/component/Anchor";
 import BlogEntry from "@/app/ui/component/BlogEntry";
-import BlogTitle from "@/app/ui/component/BlogTitle";
 import Heading from "@/app/ui/component/Heading";
 import ItchEmbed from "@/app/ui/component/ItchEmbed";
 import P from "@/app/ui/component/Paragraph";
@@ -12,8 +11,7 @@ import image2 from './image-2.png';
 
 export default function Page() {
     return <>
-        <BlogEntry>
-            <BlogTitle author="Grace Schorno" date={new Date("June 9th, 2026")}>Microphone Rhythm Game</BlogTitle>
+        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Microphone Rhythm Game">
             <P>
                 A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, controlled by a guitar.
             </P>

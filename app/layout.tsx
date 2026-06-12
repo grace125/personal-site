@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { courierPrime } from "./ui/fonts";
 import SideNav from '@/app/ui/sidenav';
 import katex from "katex";
+import { courierPrime } from "./ui/fonts";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,13 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // TODO: style scrollbar
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`min-h-full antialiased scrollbar-none md:scrollbar-auto scroll-smooth md:scroll-auto`}
     >
       <body className={`min-h-full flex flex-col ${courierPrime.className}`}>
-        <div className="flex h-screen flex-col lg:flex-row lg:overflow-hidden text-xl lg:text-lg">
+        <div className="flex min-h-screen flex-col lg:flex-row lg:overflow-hidden text-xl lg:text-lg">
           <SideNav />
           <div className="grow p-6 lg:overflow-y-auto lg:p-12">{children}</div>
           <div className="w-full flex-none lg:w-80 shrink-1000000000"></div>

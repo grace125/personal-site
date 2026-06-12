@@ -1,5 +1,4 @@
 import BlogEntry from "@/app/ui/component/BlogEntry";
-import BlogTitle from "@/app/ui/component/BlogTitle";
 import Heading from "@/app/ui/component/Heading";
 import ItchEmbed from "@/app/ui/component/ItchEmbed";
 import P from "@/app/ui/component/Paragraph";
@@ -8,8 +7,7 @@ import Section from "@/app/ui/component/Section";
 
 export default function Page() {
     return <>
-        <BlogEntry>
-            <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Super Cool Free Platformer!</BlogTitle>
+        <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Super Cool Free Platformer!">
             <P>
                 A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.
             </P>

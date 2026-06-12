@@ -1,12 +1,10 @@
 import BlogEntry from "./ui/component/BlogEntry";
 import P from "./ui/component/Paragraph";
-import BlogTitle from "./ui/component/BlogTitle";
 import Section from "./ui/component/Section";
 import A from "./ui/component/Anchor";
 
 export default function Home() {
-  return <BlogEntry>
-      <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Hello!</BlogTitle>
+  return <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Hello!">
       <Section>
         <P>This is my website! It's currently under some construction, but it'll be done tomorrow (June 9th), if not Wednesday (the 10th).</P>
         <P>If you're looking for any of my <b>projects</b>, I'd recommend looking at my <A href="https://github.com/grace125?page=1&tab=repositories">Github</A>!</P>

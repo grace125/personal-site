@@ -1,5 +1,4 @@
 import BlogEntry from "@/app/ui/component/BlogEntry";
-import BlogTitle from "@/app/ui/component/BlogTitle";
 import Heading from "@/app/ui/component/Heading";
 import ItchEmbed from "@/app/ui/component/ItchEmbed";
 import P from "@/app/ui/component/Paragraph";
@@ -7,8 +6,7 @@ import Section from "@/app/ui/component/Section";
 
 export default function Page() {
     return <>
-        <BlogEntry>
-            <BlogTitle author="Grace Schorno" date={new Date("June 7th, 2026")}>J-Ball</BlogTitle> 
+        <BlogEntry author="Grace Schorno" date={new Date("June 7th, 2026")} title="J-Ball">
             <Section>
                 <P>
                     JBall is a Breakout clone where the ball grows a mouth and starts talking. 

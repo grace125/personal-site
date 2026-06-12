@@ -1,13 +1,10 @@
 import BlogEntry from "../ui/component/BlogEntry";
-import BlogTitle from "../ui/component/BlogTitle";
 import P from "../ui/component/Paragraph";
 import Section from "../ui/component/Section";
 
 export default function Page() {
-  return <BlogEntry>
-      <BlogTitle author="Grace Schorno" date={new Date("June 8th, 2026")}>Who am I?</BlogTitle>
+  return <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Who am I?">
       <Section>
-        
         <P>
           My name is Grace Schorno. I'm a software developer, mathematician, writer, artist, and musician—or, at least I try be all these things.
           I love art, and how it interacts with math and technology. 
