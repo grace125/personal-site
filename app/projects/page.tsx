@@ -28,6 +28,9 @@ const tagData = {
     }, 
     "Game Dev": {
         color: "bg-purple-200"
+    },
+    Tool: {
+        color: "bg-gray-200"
     }
 }
 
@@ -37,6 +40,12 @@ type TagData = typeof tagData[Tag]
 type Project = { name: string, description: string, href: string, tags: Tag[],  } // date: Date
 
 const projects: Project[] = [
+    { 
+        name: "Zine Generator", 
+        description: "A tool for generating foldable zine layouts.",
+        href: "/projects/zine-generator",
+        tags: ["Art", "Tool", "Software"],
+    },
     { 
         name: "Scythe", 
         description: "A prototype for a dependently typed programming language, written in Rust; my undergrad honours project.",
