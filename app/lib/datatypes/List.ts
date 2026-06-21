@@ -7,6 +7,7 @@ import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols"
 import { HashMap } from "./HashMap";
 import { Opt } from "./Option";
 import { Result } from "./Result";
+import { appendFormatter, FormatterTag } from "../DevTools";
 
 type ListFn<T, R = unknown> = ContainerFn<ContainerFnArgs<number, T, List<T>>, R>;
 
@@ -385,3 +386,19 @@ export const listSchema = <S extends ZodType>(s: S) =>
 				return null as any as List<z.infer<S>>
 			}
 		}));
+
+appendFormatter({
+	filter: v => List.isList(v),
+	header: v => [ "span", {},
+		[ "span", { style: "color: #9999ff; font-style: italic;" }, "List " ],
+		[ "span", { style: "font-style: italic;" }, `(${v.length})` ],
+	],
+	body: v => {
+		return Opt.some([ "span", {}, 
+			...v.map<FormatterTag>((v, i) => [ "span", {}, `\t`, 
+				[ "span", { style: "color: #9999ff; line-height: 1.5em;" }, `${i}`],
+				[ "span", {}, ": " ], 
+				[ "object", { object: v }], "\n" ])
+		]);
+	}
+});

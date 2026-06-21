@@ -3,6 +3,7 @@ import { clamp, lerp } from "../Math";
 import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols";
 import { Result } from "./Result";
 import { Vec2 } from "./Vec2";
+import { appendFormatter } from "../DevTools";
 
 export class Vec3 {
 	private _vec3: [ number, number, number ] = [ 0, 0, 0 ];
@@ -350,3 +351,16 @@ export class Vec3 {
 export const vec3Schema = 
 	z.object({ "_vec3": z.tuple([ z.number(), z.number(), z.number() ]) }).or(z.instanceof(Vec3))
 	.transform((res): Vec3 => new Vec3((res as any)._vec3));
+
+appendFormatter({
+	filter: v => Vec3.isVec3(v),
+	header: (v) => [ "span", {}, 
+		[ "span", {}, "<" ],
+		[ "object", { object: v.x } ],
+		[ "span", {}, "," ],
+		[ "object", { object: v.y } ],
+		[ "span", {}, "," ],
+		[ "object", { object: v.z } ],
+		[ "span", {}, ">" ]
+	]
+});

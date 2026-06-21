@@ -1,4 +1,4 @@
-import { z, ZodTypeAny } from "zod";
+import { object, z, ZodTypeAny } from "zod";
 import { ContainerFn, ContainerFnArgs } from "../traits/ContainerIterFn";
 import { Hash, Hashable, HashFunction } from "../traits/Hashable";
 import { Pipeable } from "../traits/Pipeable";
@@ -6,6 +6,7 @@ import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols"
 import { List } from "./List";
 import { Opt } from "./Option";
 import { Result } from "./Result";
+import { appendFormatter, FormatterTag } from "../DevTools";
 
 type HashMapFn<K, V, R = unknown> = ContainerFn<ContainerFnArgs<K, V, HashMap<K, V>>, R>
 
@@ -160,3 +161,21 @@ export const hashMapSchema = <K extends ZodTypeAny, V extends ZodTypeAny>(k: K, 
 	.or(z.custom<HashMap<z.infer<K>, z.infer<V>>>(val => val instanceof HashMap)
 		.transform(hm => HashMap.of<z.infer<K>, z.infer<V>>(...[...hm.entries()]
 			.map(([kk, vv]) => [k.parse(kk), v.parse(vv)] as const))));
+
+appendFormatter({
+	filter: v => HashMap.isHashMap(v),
+	header: v => [ "span", {},
+		[ "span", { style: "color: #9999ff; font-style: italic;" }, "HashMap " ],
+		[ "span", { style: "font-style: italic;" }, `(${v.size})` ],
+	],
+	body: v => {
+		return Opt.some([ "span", {}, 
+			...v.entries().map(([k, v]) => [ "span", {}, `\t`, 
+				[ "object", { object: k }],
+				[ "span", { style: "color: #9999ff; line-height: 1.5em;" }, ": " ], 
+				[ "object", { object: v }], 
+				"\n" 
+			] satisfies FormatterTag)
+		]);
+	}
+});

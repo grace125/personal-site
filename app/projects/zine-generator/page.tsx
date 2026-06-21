@@ -1,3 +1,5 @@
+'use client';
+
 import A from "@/app/ui/component/Anchor";
 import BlogEntry from "@/app/ui/component/document/BlogEntry";
 import Heading from "@/app/ui/component/Heading";

@@ -6,6 +6,7 @@ import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols"
 import { List } from "./List";
 import { Opt } from "./Option";
 import { Result } from "./Result";
+import { appendFormatter, FormatterTag } from "../DevTools";
 
 type HashSetFn<V, R = unknown> = ContainerFn<ContainerFnArgs<V, V, HashSet<V>>, R>
 
@@ -118,3 +119,18 @@ export const hashSetSchema = <V extends ZodTypeAny>(s: V) =>
 	z.set(s).transform(HashSet.from)
 	.or(z.custom<HashSet<z.infer<V>>>(val => val instanceof HashSet)
 		.transform(hs => HashSet.of<z.infer<V>>(...[...hs.values()].map(v => s.parse(v)))));
+
+appendFormatter({
+	filter: v => HashSet.isHashSet(v),
+	header: v => [ "span", {},
+		[ "span", { style: "color: #9999ff; font-style: italic;" }, "HashSet " ],
+		[ "span", { style: "font-style: italic;" }, `(${v.size})` ],
+	],
+	body: v => {
+		return Opt.some([ "span", {}, 
+			...v.map<FormatterTag>((v, i) => [ "span", {}, `\t`, 
+				[ "span", { style: "color: #9999ff; line-height: 1.5em;" }, `• `],
+				[ "object", { object: v }], "\n" ])
+		]);
+	}
+});

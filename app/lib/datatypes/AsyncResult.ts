@@ -1,3 +1,4 @@
+import { appendFormatter } from "../DevTools";
 import { Pipeable } from "../traits/Pipeable";
 import { List } from "./List";
 import { Option } from "./Option";
@@ -118,6 +119,8 @@ class AsyncResult<V, E> implements Pipeable<AsyncResult<V, E>>, AsyncResultLike<
 	voidErr() { return new AsyncResult<V, void>(this._promise.then(r => r.voidErr())); }
 	/** Converts an Ok result into a Some, and an Error result into a None. */
 	toAsyncResult(): AsyncResult<V, E> { return this; }
+	/** Converts the async result into a promise wrapping a result */
+	toPromiseResult() { return this._promise }
 	async toOptionAsync(): Promise<Option<V>> { return (await this._promise).toOption(); }
 	async toResultAsync(): Promise<Result<V, E>> { return (await this._promise).toResult(); }
 	async await(): Promise<Result<V, E>> { return this.toResultAsync(); } 
@@ -341,3 +344,12 @@ class AsyncResult<V, E> implements Pipeable<AsyncResult<V, E>>, AsyncResultLike<
 }
 
 export { AsyncResult as AsyncRes, AsyncResult };
+
+appendFormatter({
+	filter: AsyncResult.isAsyncResult,
+	header: (v) => ["span", {}, 
+		["span", {}, "AsyncResult("], 
+		[ "object", { object: v.toPromiseResult() }], 
+		["span", {}, ")"]
+	]
+});

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideNav from '@/app/ui/sidenav';
-import katex from "katex";
 import { courierPrime } from "./ui/fonts";
+import "katex";
 
 
 export const metadata: Metadata = {
@@ -25,7 +25,9 @@ export default function RootLayout({
       <body className={`min-h-full flex flex-col ${courierPrime.className}`}>
         <div className="flex min-h-screen flex-col lg:flex-row lg:overflow-hidden text-xl lg:text-lg">
           <SideNav />
-          <div className="grow p-6 lg:overflow-y-auto lg:p-12">{children}</div>
+          <div className="grow p-6 lg:overflow-y-auto lg:p-12">
+            {children}
+          </div>
           <div className="w-full flex-none lg:w-80 shrink-1000000000"></div>
         </div>
       </body>

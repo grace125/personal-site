@@ -3,6 +3,7 @@ import { Pipeable } from "../traits/Pipeable";
 import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols";
 import { Opt, OptLike } from "./Option";
 import { Result, ResultLike } from "./Result";
+import { appendFormatter } from "../DevTools";
 
 type LetHelpers = {
 	bind: <U>(val: Identity<U>) => U;
@@ -23,6 +24,7 @@ class Identity<T = void> implements Pipeable<Identity<T>>, ResultLike<T, never>,
 	tapId(tapper: (val: T) => unknown) { tapper(this.unwrap()); return this; }
 	effect(effect: (val: T) => unknown) { return this.tapId(effect); }
 	flat() { return this.unwrap() instanceof Identity ? this.unwrap() : this; }
+	static isIdentity(v: unknown): v is Identity<unknown> { return v instanceof Identity; }
 
 	toOption() { return Opt.some(this.unwrap()); }
 	toResult<E = never>() { return Result.ok<T, E>(this.unwrap()); }
@@ -52,3 +54,12 @@ export const idSchema = <TS extends ZodTypeAny>(t: TS) =>
 	z.object({ "_identity": t })
 	.or(z.custom<Identity<z.input<TS>>>(v => v instanceof Identity))
 	.transform((res: any): Identity<z.infer<typeof t>> => Identity.new(res._identity));
+
+appendFormatter({
+	filter: v => Identity.isIdentity(v),
+	header: (v) => [ "span", {},
+		[ "span", { style: "color: #9999ff; font-style: italic;" }, "Id" ],
+		[ "span", {}, "(" ],
+		 ["object", { object: v.unwrap() } ],
+		[ "span", {}, ")" ] ]
+});

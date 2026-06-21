@@ -5,6 +5,7 @@ import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols"
 import { List } from "./List";
 import { Result, ResultLike } from "./Result";
 import { AsyncResult, AsyncResultLike } from "./AsyncResult";
+import { appendFormatter, FormatterElemTag } from "../DevTools";
 
 type Some<T> = { some: true, v: T; }
 type None = { some: false }
@@ -276,3 +277,15 @@ export const optionSchema = <S extends ZodType>(t: S) =>
 	z.object({ "_option": z.union([ z.object({ some: z.literal(true), v: t }), z.object({ some: z.literal(false), v: z.never().optional() }) ]) })
 	.or(z.custom<Opt<z.input<S> | never>>(v => v instanceof Opt))
 	.transform((res) => new Opt<z.infer<S>>((res as any)._option));
+
+appendFormatter({
+	filter: v => Opt.isOption(v),
+	header: (v) => v.match<FormatterElemTag>(
+		val => [ "span", {}, 
+			[ "span", { style: "color: #9999ff; font-style: italic;" }, "Some" ],
+			[ "span", {}, "(" ],
+			["object", { object: val } ],
+			[ "span", {}, ")" ] ],
+		() => [ "span", { style: "color: #9999ff; font-style: italic;" }, "None" ],
+	)
+});

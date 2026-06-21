@@ -5,6 +5,7 @@ import { AsyncResult, AsyncResultLike } from "./AsyncResult";
 import { HashMap } from "./HashMap";
 import { List } from "./List";
 import { Option, OptLike } from "./Option";
+import { appendFormatter, FormatterElemTag } from "../DevTools";
 
 type Ok<V> = { ok: true, v: V; }
 type Err<E> = { ok: false, v: E }
@@ -335,3 +336,19 @@ export const resultSchema = <VS extends ZodTypeAny, ES extends ZodTypeAny>(v: VS
 	"_result": z.union([ z.object({ ok: z.literal(true), v: v }), z.object({ ok: z.literal(false), v: e }) ])
 }).transform((res: any): Result<z.infer<typeof v>, z.infer<typeof e>> =>
 	new Result((res as any)._result));
+
+appendFormatter({
+	filter: v => Result.isResult(v),
+	header: (v) => v.match<FormatterElemTag>(
+		val => [ "span", {}, 
+			[ "span", { style: "color: #9999ff; font-style: italic;" }, "Ok" ],
+			[ "span", {}, "(" ],
+			["object", { object: val } ],
+			[ "span", {}, ")" ] ],
+		err => [ "span", {}, 
+			[ "span", { style: "color: #9999ff; font-style: italic;" }, "Err" ],
+			[ "span", {}, "(" ],
+			["object", { object: err } ],
+			[ "span", {}, ")" ] ],
+	)
+});

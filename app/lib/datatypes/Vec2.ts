@@ -3,6 +3,7 @@ import { clamp, lerp } from "../Math";
 import { Pipeable } from "../traits/Pipeable";
 import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols";
 import { Result } from "./Result";
+import { appendFormatter } from "../DevTools";
 
 export class Vec2 implements Pipeable<Vec2> {
 	private _vec2: [ number, number ] = [ 0, 0 ];
@@ -341,3 +342,14 @@ export class Vec2 implements Pipeable<Vec2> {
 export const vec2Schema = 
 	z.object({ "_vec2": z.tuple([ z.number(), z.number() ]) }).or(z.instanceof(Vec2))
 	.transform((res): Vec2 => new Vec2((res as any)._vec2));
+
+appendFormatter({
+	filter: v => Vec2.isVec2(v),
+	header: (v) => [ "span", {}, 
+		[ "span", {}, "<" ],
+		[ "object", { object: v.x } ],
+		[ "span", {}, "," ],
+		[ "object", { object: v.y } ],
+		[ "span", {}, ">" ]
+	]
+});
