@@ -1,15 +1,13 @@
 'use client';
 
-import { List } from "@/app/lib/datatypes/List";
 import { Opt } from "@/app/lib/datatypes/Option";
 import { Result } from "@/app/lib/datatypes/Result";
-import { dbg } from "@/app/lib/Debug";
 import { mod } from "@/app/lib/Math";
-import { useState, Fragment, InputHTMLAttributes, DetailedHTMLProps, ReactNode, useEffect, ChangeEvent, SetStateAction, Dispatch } from "react";
+import { useState, ReactNode, } from "react";
 import { Z , z } from "@/app/lib/Z"
-import React from "react";
-import { Id } from "@/app/lib/datatypes/Id";
 import { NumberInput } from "../form/NumberInput";
+import { List } from "@/app/lib/datatypes/List";
+import React from "react";
 
 type ZineFromGridProps = {
     paperW: number,
@@ -17,7 +15,7 @@ type ZineFromGridProps = {
     marginX: number,
     marginY: number,
     strokeWidth?: number,
-    table: (number | null)[][],
+    table: List<List<Opt<number>>>,
     lastEntry: number
 }
 
@@ -124,36 +122,31 @@ const Svg = (p: { children?: ReactNode, paperW: number, paperH: number, strokeWi
     </svg>
 
 const columnLines = (p: ZineComputedProps) => {
-    const elements: ReactNode[] = []
+    const elements = []
 
     for (var r = 0; r < p.rowCount; r++) {
         const y1 = p.rowStep * r + p.marginY
         const y2 = y1 + p.rowStep
         for (var c = -1; c < p.colCount; c++) {
             const x = p.colStep * (c + 1) + p.marginX
-            const left = index(p.table[r], c) ?? null
-            const right = index(p.table[r], c + 1) ?? null
+            const left = p.table.get2(r, c).flat()
+            const right = p.table.get2(r, c + 1).flat()
+            const key = `in-h-${r}-${c}`
+            const coords = { x1: x, x2: x, y1, y2 }
 
-            if (left === null && right === null) {
-
-            } 
-            else if (left === null || right === null) {
-                elements.push(<p.Line key={`in-h-${r}-${c}`} x1={x} x2={x} y1={y1} y2={y2} kind="cut" />)
-            }
-            else if (Math.abs(left - right) === 1) {
-                if (Math.min(left, right) % 2 === 1) {
-                    elements.push(<p.Line key={`in-h-${r}-${c}`} x1={x} x2={x} y1={y1} y2={y2} kind="mountain" />)
-                }
-                else {
-                    elements.push(<p.Line key={`in-h-${r}-${c}`} x1={x} x2={x} y1={y1} y2={y2} kind="valley" />)
-                }
-            }
-            else if (Math.min(left, right) === 1 && Math.max(left, right) == p.lastEntry) {
-                elements.push(<p.Line key={`in-h-${r}-${c}`} x1={x} x2={x} y1={y1} y2={y2} kind="mountain" />)
-            }
-            else {
-                elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x} x2={x} y1={y1} y2={y2} kind="cut" />)
-            }
+            let line = left.match2Either(right, {
+                some: (left, right) => 
+                    Math.abs(left - right) === 1 
+                        ? mod(Math.min(left, right), 2) === 1 
+                            ? <p.Line {...coords} key={key} kind="mountain" />
+                            : <p.Line {...coords} key={key} kind="valley" />
+                        : Math.min(left, right) === 1 && Math.max(left, right) == p.lastEntry
+                            ? <p.Line {...coords} key={key} kind="mountain" />
+                            : <p.Line {...coords} key={key} kind="cut" />,
+                either: (cell) => <p.Line {...coords} key={key} kind="cut" />,
+                none: () => <React.Fragment key={`in-h-${r}-${c}`} />
+            })
+            elements.push(line)
         }
     }
 
@@ -168,29 +161,24 @@ const rowLines = (p: ZineComputedProps) => {
         const x2 = x1 + p.colStep
         for (var r = -1; r < p.rowCount; r++) {
             const y = p.rowStep * (r + 1) + p.marginY
-            const top = (index(p.table, r) ?? [])[c] ?? null
-            const bottom = (index(p.table, r + 1) ?? [])[c] ?? null
+            const top = p.table.get2(r, c).flat()
+            const bottom = p.table.get2(r + 1, c).flat()
+            const key = `in-h-${r}-${c}`
+            const coords = { x1, x2, y1: y, y2: y }
 
-            if (top === null && bottom === null) {
-
-            } 
-            else if (top === null || bottom === null) {
-                elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x1} x2={x2} y1={y} y2={y} kind="cut" />)
-            }
-            else if (Math.abs(top - bottom) === 1) {
-                if (Math.min(top, bottom) % 2 === 1) {
-                    elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x1} x2={x2} y1={y} y2={y} kind="mountain" />)
-                }
-                else {
-                    elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x1} x2={x2} y1={y} y2={y} kind="valley" />)
-                }
-            }
-            else if (Math.min(top, bottom) === 1 && Math.max(top, bottom) == p.lastEntry) {
-                elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x1} x2={x2} y1={y} y2={y} kind="mountain" />)
-            }
-            else {
-                elements.push(<p.Line key={`in-v-${r}-${c}`} x1={x1} x2={x2} y1={y} y2={y} kind="cut" />)
-            }
+            const line = top.match2Either(bottom, {
+                some: (t, b) => 
+                    Math.abs(t - b) === 1 
+                        ? mod(Math.min(t, b), 2) === 1 
+                            ? <p.Line {...coords} key={key} kind="mountain"  />
+                            : <p.Line {...coords} key={key} kind="valley" />
+                        : Math.min(t, b) === 1 && Math.max(t, b) == p.lastEntry
+                            ? <p.Line {...coords} key={key} kind="mountain" />
+                            : <p.Line {...coords} key={key} kind="cut" />,
+                either: () => <p.Line {...coords} key={key} kind="cut" />,
+                none: () => <React.Fragment key={key} />
+            })
+            elements.push(line)
         }
     }
 
@@ -205,30 +193,21 @@ const cellText = (p: ZineComputedProps) => {
         const x = p.colStep * (c + 0.5) + p.marginX
         for (var r = 0; r < p.rowCount; r++) {
             const y = p.rowStep * (r + 0.5) + p.marginY
-            const cell = p.table[r][c]
-            if (cell !== null) {
-                elements.push(<g key={`text-${r}-${c}`} transform={`
+            const cell = p.table.get2(r, c).flat()
+            const key = `text-${r}-${c}`
+            cell.tapSome(cell => elements.push(
+                <g key={key} transform={`
                     translate(${x}, ${y}) 
                     scale(${size} ${size})
                     rotate(${r % 2 === 0 ? 180 : 0})
                 `}>
                     <text className={`underline text-4xl [text-anchor:middle] [dominant-baseline:middle]`}>{cell}</text>
-                </g>)
-            }
-            
+                </g>
+            ))
         }
     }
 
     return elements
-}
-
-const index = <T,>(arr: T[], idx: number) => {
-    if (0 <= idx && idx < arr.length) {
-        return arr[idx]
-    }
-    else {
-        return null
-    }
 }
 
 const repeat = <T,>(item: T, length: number) => {
@@ -250,7 +229,7 @@ const generate = <T,>(item: (i: number) => T, length: number) => {
     }
 }
 
-const generateGrid = (rowCount: number, colCount: number, take: number): Result<(number | null)[][], ZineGridError> => {
+const generateGrid = (rowCount: number, colCount: number, take: number): Result<List<List<Opt<number>>>, ZineGridError> => {
     if (rowCount % 2 !== 0 || rowCount <= 0)        return Result.err("RowCountError")
     else if (colCount % 2 !== 0 || rowCount <= 0)   return Result.err("ColCountError")
     else if (take >= rowCount * colCount)           return Result.err("TooFewColumns")
@@ -264,29 +243,29 @@ const generateGrid = (rowCount: number, colCount: number, take: number): Result<
 
     let innerGrid = generateGridInner(restRowCount, restColCount, take - noneRowCount * colCount - noneColCount * restRowCount)
 
-    return Result.ok([
-        ...repeat(repeat(null, colCount), noneRowCount), 
-        ...innerGrid.map(row => [...repeat(null, noneColCount), ...row]) 
-    ])
+    return Result.ok(List.of(
+        ...List.repeat(noneRowCount, List.repeat(colCount, Opt.none())), 
+        ...innerGrid.map(row => List.of(...List.repeat(noneColCount, Opt.none()), ...row)) 
+    ))
 }
 
-const generateGridInner = (rowCount: number, colCount: number, take: number): (number | null)[][] => {
+const generateGridInner = (rowCount: number, colCount: number, take: number): List<List<Opt<number>>> => {
     let total = rowCount * colCount - take
     
     return makePathArray(rowCount, colCount / 2, take / 2)
         .map((arr, r) => 
             arr.flatMap((v) => v.match(
-                (index): (number | null)[] => r % 2 === 0 
-                    ? [mod(index * 2, total) + 1, mod(index * 2 - 1, total) + 1] 
-                    : [mod(index * 2 - 1, total) + 1, mod(index * 2, total) + 1],
-                () => [null, null]
+                (index) => r % 2 === 0 
+                    ? [Opt.some(mod(index * 2, total) + 1), Opt.some(mod(index * 2 - 1, total) + 1)] 
+                    : [Opt.some(mod(index * 2 - 1, total) + 1), Opt.some(mod(index * 2, total) + 1)],
+                () => [Opt.none(), Opt.none()]
             )), 
         )
 }
 
 const makePathArray = (rowCount: number, colCount: number, take: number) => {
     let path = makePathFn(rowCount, colCount, take)
-    return generate((r) => generate((c) => path(r, c), colCount), rowCount)
+    return List.gen(rowCount, (r) => List.gen(colCount, (c) => path(r, c)))
 }
     
 /* invariants: rowCount and take are even, take < rowCount, take > rowCount * colCount, !(colCount === 2 && take === 1), and (colCount === 1 => rowCount - t) */

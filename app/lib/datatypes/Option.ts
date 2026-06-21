@@ -206,6 +206,29 @@ class Opt<T = void> implements Pipeable<Opt<T>>, OptLike<T>, ResultLike<T, unkno
 		else return this.isSome() ? a.some(this.get()) : a.none();
 	}
 
+	match2<U, V>(second: Opt<U>, match: { some: (t: T, u: U) => V, left: (t: T) => V, right: (u: U) => V, none: () => V }): V {
+		if (this._option.some === true) {
+			const l = this._option.v
+			if (second._option.some === true) return match.some(l, second._option.v)
+			else return match.left(l)
+		}
+		else {
+			if (second._option.some === true) return match.right(second._option.v)
+			else return match.none()
+		}
+	}
+	match2Either<U>(second: Opt<T>, match: { some: (l: T, r: T) => U, either: (t: T) => U, none: () => U }): U {
+		if (this._option.some === true) {
+			const l = this._option.v
+			if (second._option.some === true) return match.some(l, second._option.v)
+			else return match.either(l)
+		}
+		else {
+			if (second._option.some === true) return match.either(second._option.v)
+			else return match.none()
+		}
+	}
+
 	/**
 	 * Calls `tapper` with `this`. The return value of `tapper` is ignored. Mainly used for debugging,
 	 * e.g. `.tap(console.log)` can be inserted anywhere in the pipeline to log the value, without altering the pipeline.

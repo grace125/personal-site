@@ -76,7 +76,7 @@ class HashMap<K, V> implements Iterable<[K, V]>, Pipeable<HashMap<K, V>> {
 	findKey(pred: HashMapFn<K, V>): Opt<K> {
 		const ent = [...this._hashmap.values()];
 		const ind = ent.findIndex(([ key, val ]) => pred(val, key, this))
-		return ind === -1 ? Opt.none() : Opt.some(ent[ind][0]);
+		return ind === -1 ? Opt.none() : Opt.some(ent[ind]![0]!);
 	}
 	find(pred: HashMapFn<K, V>): Opt<V> { 
 		return this.findKey(pred).bind(key => this.get(key));

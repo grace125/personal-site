@@ -1,6 +1,6 @@
 import { z, ZodType } from "zod";
 import { gt, lt } from "../Functional";
-import { clamp } from "../Math";
+import { clamp, mod } from "../Math";
 import { ContainerFn, ContainerFnArgs } from "../traits/ContainerIterFn";
 import { Pipeable } from "../traits/Pipeable";
 import { Deserialize, Serialize, TypeName } from "../traits/SerializableSymbols";
@@ -56,6 +56,27 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 	static from<T>(val: Array<T> | List<T> | Iterable<T>) { return new List<T>(List.isList(val) ? [...val._list as T[]] : val); }
 	static of<T>(...elems: T[]) { return new List<T>(elems); }
 	static new<T = never>() { return new List<T>([]); }
+
+	static gen<T>(len: number, f: (i: number) => T) {
+		const arr = []
+		arr.length = Math.max(len, 0)
+		for (var i = 0; i < len; i++) arr[i] = f(i)
+		return List.from(arr)
+	}
+	static gen2flat<T>(rows: number, cols: number, f: (r: number) => (c: number) => T): List<T> {
+		const arr = []
+		for (var r = 0; r < rows; r++) {
+			const g = f(r)
+			for (var c = 0; c < cols; c++) arr.push(g(c))
+		}
+		return List.from(arr)
+	}
+	static repeat<T>(len: number, item: T) {
+		const arr = []
+		arr.length = Math.max(len, 0)
+		for (var i = 0; i < len; i++) arr[i] = item
+		return List.from(arr)
+	}
 	
 	static range(max: number): List<number>;
 	static range(min: number, max: number, step?: number): List<number>;
@@ -70,8 +91,12 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 	pipe<O>(v: (self: this) => O) { return v(this); }
 	$<O>(v: (self: this) => O) { return v(this); }
 
-	at(ind: number) { return Opt.undefined(this._list.at(ind)); }
-	_(ind: number) { return this._list.at(clamp(ind, 0, this._list.length - 1)); }
+	get(ind: number) { return Opt.undefined(this._list[ind]); }
+	getClamped(ind: number) { return Opt.undefined(this._list.at(clamp(ind, 0, this._list.length - 1))); }
+	getMod(ind: number) { return this._list.at(mod(ind, this._list.length)) }
+	get2<U>(this: List<List<U>>, ind1: number, ind2: number) {
+		return Opt.undefined(this._list[ind1]?._list[ind2])
+	}
 
 	set(ind: number, value: T) {
 		return new List(this._list.with(ind < 0 ? this._list.length + ind : ind, value));
@@ -150,7 +175,7 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 		return new List(this._list.map((v, i) => mapper(v, i, this)));
 	}
 	mapMut<U = T>(mapper: ListFn<T, U>): List<U> {
-		for (let i = 0; i < this._list.length; i++) this._list[i] = mapper(this._list[i], i, this) as any as T;
+		for (let i = 0; i < this._list.length; i++) this._list[i] = mapper(this._list[i]!, i, this) as any as T;
 		return this as any as List<U>;
 	}
 
@@ -170,7 +195,7 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 		initialState: S) {
 		let state = initialState;
 		for (let i = 0; i < this._list.length; i++) {
-			const [ newState, newVal ] = mapper(state, this._list[i], i, this);
+			const [ newState, newVal ] = mapper(state, this._list[i]!, i, this);
 			state = newState;
 			this._list[i] = newVal as any as T;
 		}
@@ -193,14 +218,14 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 			mapper(state, this[index]!, index, this), initialState);
 	}
 
-	zip<S>(list: List<S>): Result<List<[T, S]>, string> {
+	zip2<S>(list: List<S>): Result<List<[T, S]>, string> {
 		return this
-			.map<[ T, S ]>((v, i) => [ v, list.at(i).orNull()! ])
+			.map<[ T, S ]>((v, i) => [ v, list.get(i).orNull()! ])
 			.pipe(l => Result.ok(l))
 			.filter(() => list.length === this.length, "Lists must be the same length.") 
 	}
 	zipWithPrevious(): List<[Opt<T>, T]> {
-		return this.map((v, i) => [ i === 0 ? Opt.none() : this.at(i - 1), v ]);
+		return this.map((v, i) => [ i === 0 ? Opt.none() : this.get(i - 1), v ]);
 	}
 
 	flatMap<U>(mapper: ListFn<T, List<U> | U[]>): List<U> {
@@ -231,7 +256,7 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 	filterMut(pred: ListFn<T>) {
 		let o = 0;
 		for (let i = 0; i < this._list.length; i++) {
-			if (!pred(this._list[i], o++, this)) this._list.splice(i--, 1);
+			if (!pred(this._list[i]!, o++, this)) this._list.splice(i--, 1);
 		}
 		return this;
 	}
@@ -282,9 +307,9 @@ export class List<T = never> implements Iterable<T>, Pipeable<List<T>> {
 		});
 		return Opt.some(minInd).filter(m => m !== -1);
 	}
-	findMin(pred: ListFn<T, number>) { return this.findMinIndex(pred).bind(i => this.at(i)); }
+	findMin(pred: ListFn<T, number>) { return this.findMinIndex(pred).bind(i => this.get(i)); }
 	findMinIndex(pred: ListFn<T, number>) { return this.findPredCmpIndex(pred, lt); }
-	findMax(pred: ListFn<T, number>) { return this.findMaxIndex(pred).bind(i => this.at(i)); }
+	findMax(pred: ListFn<T, number>) { return this.findMaxIndex(pred).bind(i => this.get(i)); }
 	findMaxIndex(pred: ListFn<T, number>) { return this.findPredCmpIndex(pred, gt); }
 
 	find<S extends T>(pred: (value: T, ind: number, list: List<T>) => value is S): Opt<S>;
