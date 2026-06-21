@@ -10,7 +10,7 @@ export default function Home() {
           This is my website! 
           It's not much at the moment, but I have big plans for it.
         </P>
-        <P>If you're looking for any of my <b>projects</b>, I'd recommend you head <A href="/projects">here</A>, and if you want to know more about <b>me</b> I'd suggest you go <A href="/projects">here</A>!</P>
+        <P>If you're looking for any of my <b>projects</b>, I'd recommend you head <A href="/projects">here</A>, and if you want to know more about <b>me</b> I'd suggest you go <A href="/about">here</A>!</P>
         <P>Have a great day!</P>
       </Section>
     </BlogEntry>
