@@ -14,12 +14,12 @@ export const NumberInput = (p: NumberInputProps) => {
     const [value, setValue] = p.value
     const parse = p.parse ?? z.coerce.number()
 
-    const [innerValue, setInnerValue] = useState(value)
+    const [innerValue, setInnerValue] = useState(value.toString())
     const [err, setErrValue] = useState(<React.Fragment key="error"></React.Fragment>)
 
     const onChange = (event: ChangeEvent<HTMLInputElement, HTMLInputElement>) => {
         Z.parse(parse, event.target.value)
-            .tapOk(ok => setInnerValue(ok))
+            .tapOk(ok => setInnerValue(ok.toString()))
             .bind((n) => Z.parse(p.validate, n))
             .match(
                 ok => {
