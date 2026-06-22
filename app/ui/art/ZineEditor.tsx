@@ -58,7 +58,7 @@ export function ZineEditor() {
     // TODO: display size of each page
     // TODO: fix validation
     return <div>
-        <form noValidate className="grid grid-cols-2 grid-rows gap-x-12 mx-16 gap-y-4 mt-12 mb-4">
+        <form noValidate className="grid grid-cols-2 grid-rows gap-x-12 mx-16 gap-y-4 mt-[4.2em] mb-[1.4em]">
             <NumberInput name="Paper Width" min={0.0} step={0.5} value={paperW} validate={z.number().min(0.001) }/>
             <NumberInput name="Paper Height" min={0.0} step={0.5} value={paperH} validate={z.number().min(0.001)}/> 
             <NumberInput name="Margin X" min={0} value={marginX} step={0.5} validate={z.number().min(0)} />

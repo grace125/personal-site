@@ -36,7 +36,7 @@ export const NumberInput = (p: NumberInputProps) => {
     }
     const newProps = {...p, value: innerValue, onChange }
     return <div className="min-w-fit">
-        <label className="block text-contrast-3 text-nowrap min-w-30">{p.name}</label>
+        <label className="block text-contrast-3 text-nowrap min-w-30 text-lg">{p.name}</label>
         <input {...newProps} className={`bg-mode-1 border-b-2 border-contrast-2 rounded-sm w-full`} type="number" />
         {err}
     </div>
