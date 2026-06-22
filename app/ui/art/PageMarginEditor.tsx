@@ -167,6 +167,6 @@ type NumberInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
 const NumberInput = (props: NumberInputProps) => {
     return <>
         <span>{props.name} </span>
-        <input {...props} className="bg-background-2 border-2 border-foreground-2 border-dashed rounded-sm w-30" type="number" />
+        <input {...props} className="bg-mode-2 border-2 border-contrast-2 border-dashed rounded-sm w-30" type="number" />
     </>
 }

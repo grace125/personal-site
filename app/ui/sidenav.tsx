@@ -13,7 +13,7 @@ const links = [
 export default function SideNav() {
     let path = usePathname()
     return <div className="w-[full-4] flex-none lg:w-76 m-2">
-        <div className="block overflow-auto rounded-md bg-background-2 border-2 border-dashed border-foreground-2 lg:border-r-2" > {/* border-r-2 */}
+        <div className="block overflow-auto rounded-md bg-mode-1 border-2 border-dashed border-contrast-2 lg:border-r-2" > {/* border-r-2 */}
             {links.map((link) => {
                 const text_style = path.startsWith(link.href) ? "bg-highlight" : ""
                 return <Link 

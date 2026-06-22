@@ -1,9 +1,7 @@
 'use client';
 
-import A from "@/app/ui/component/Anchor";
 import BlogEntry from "@/app/ui/component/document/BlogEntry";
 import Heading from "@/app/ui/component/Heading";
-import Math from "@/app/ui/component/Math";
 import P from "@/app/ui/component/Paragraph";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"

@@ -28,16 +28,16 @@ export const NumberInput = (p: NumberInputProps) => {
                 },
                 err => {
                     return Id(<React.Fragment key="error">
-                        <span className="text-[#ff0000]">{z.treeifyError(err).errors[0]}</span>
+                        <span className="text-err">{z.treeifyError(err).errors[0]}</span>
                     </React.Fragment>)
                 }
             )
             .map(setErrValue)
     }
     const newProps = {...p, value: innerValue, onChange }
-    return <div>
-        <label className="block">{p.name}</label>
-        <input {...newProps} className={`bg-background-2 border-2 border-foreground-2 rounded-sm w-full`} type="number" />
+    return <div className="min-w-fit">
+        <label className="block text-contrast-3 text-nowrap min-w-30">{p.name}</label>
+        <input {...newProps} className={`bg-mode-1 border-b-2 border-contrast-2 rounded-sm w-full`} type="number" />
         {err}
     </div>
 }

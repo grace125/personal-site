@@ -6,5 +6,5 @@ export default function P(props: { children: ReactNode, noindent?: boolean, hang
       "indent-[-4ch] pl-[4ch]" : 
       "indent-[4ch]"
       ;
-  return <p className={`text-xl leading-[1.4em] text-foreground/70 mt-4 ${indent}`}>{props.children}</p>
+  return <p className={`text-xl leading-[1.4em] text-contrast-3 mt-4 ${indent}`}>{props.children}</p>
 }

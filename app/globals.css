@@ -1,50 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f4e6;
-  --background-2: #ffffff;
-  --foreground: #393442;
-  --foreground-2: #000000;
+  --mode-1: #ffffff;
+  --mode-2: #f7f4e6;
+  --contrast-1: #000000;
+  --contrast-2: #393442;
+  --contrast-3: color-mix(in oklab, var(--contrast-2) 70%, var(--mode-2) 30%);
+  --contrast-4: color-mix(in oklab, var(--contrast-2) 40%, var(--mode-2) 60%);
   --highlight: oklch(90.5% 0.182 98.111); /* yellow-300 */
   --hyperlink: oklch(54.6% 0.245 262.881); /*blue-600 */
   --hyperlink-hover: oklch(42.4% 0.199 265.638); /* blue-800 */
   --hyperlink-visited: oklch(49.6% 0.265 301.924); /* purple-700 */
   --sidenav-hover: oklch(95.1% 0.026 236.824); /* bg-sky-100 */
+  --err: #ff0000
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #393442;
-    --background-2: #000000;
-    --foreground: #f7f4e6;
-    --foreground-2: #ffffff;
+    --mode-1: #000000;
+    --mode-2: #393442;
+    --contrast-1: #ffffff;
+    --contrast-2: #f7f4e6;
+    --contrast-3: color-mix(in oklab, var(--contrast-2) 70%, var(--mode-2) 30%);
+    --contrast-4: color-mix(in oklab, var(--contrast-2) 40%, var(--mode-2) 60%);
     --highlight: oklch(49.6% 0.265 301.924); /* purple-700 */
     --hyperlink: oklch(70.7% 0.165 254.624); /* blue-400 */
     --hyperlink-hover: oklch(88.2% 0.059 254.128); /* blue-200 */
     --hyperlink-visited: oklch(82.7% 0.119 306.383); /* purple-300 */
     --sidenav-hover: oklch(39.1% 0.09 240.876); /* bg-sky-100 */
+    --err: #00ff00
   }
 }
 
 /* text-blue-600 hover:text-blue-800 visited:text-purple-700 dark:visited:text-purple-300 */
 
 @theme inline {
-  --color-*: initial;
-  --color-background: var(--background);
-  --color-background-2: var(--background-2);
-  --color-foreground: var(--foreground);
-  --color-foreground-2: var(--foreground-2);
+  --color-mode-1: var(--mode-1);
+  --color-mode-2: var(--mode-2);
+  --color-contrast-1: var(--contrast-1);
+  --color-contrast-2: var(--contrast-2);
+  --color-contrast-3: var(--contrast-3);
+  --color-contrast-4: var(--contrast-4);
   --color-highlight: var(--highlight);
   --color-hyperlink: var(--hyperlink); 
   --color-hyperlink-hover: var(--hyperlink-hover);
   --color-hyperlink-visited: var(--hyperlink-visited);
   --color-sidenav-hover: var(--sidenav-hover);
+  --color-err: var(--err);
 }
 
 
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--mode-2);
+  color: var(--contrast-2);
   font-family: Arial, Helvetica, sans-serif;
 }
