@@ -19,17 +19,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`min-h-full antialiased scrollbar-none md:scrollbar-auto scroll-smooth md:scroll-auto`}
+      className={`antialiased h-full overflow-clip`}
     >
-      <body className={`min-h-full flex flex-col ${courierPrime.className}`}>
-        <div className="flex min-h-screen flex-col lg:flex-row lg:overflow-hidden text-xl lg:text-lg">
-          <SideNav />
-          <div className="grow p-6 lg:overflow-y-auto lg:p-12">
-            {children}
+      <body className={`h-full overflow-clip flex flex-col ${courierPrime.className}`}>
+        <div className="h-full overflow-y-scroll md:scrollbar-auto scroll-smooth md:scroll-auto">
+          <div className="flex min-h-screen flex-col lg:flex-row text-xl lg:text-lg">
+            <SideNav />
+            <div className="grow p-6 lg:p-12">
+              {children}
+            </div>
+            <div className="w-full flex-none lg:w-80 shrink-max"></div>
           </div>
-          <div className="w-full flex-none lg:w-80 shrink-1000000000"></div>
         </div>
       </body>
     </html>
   );
 }
+
+{/*  */}
+
