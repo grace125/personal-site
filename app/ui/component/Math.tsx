@@ -45,7 +45,7 @@ export default function Math(props: DetailedHTMLProps<HTMLAttributes<HTMLDivElem
   }, [props.children]);
 
   return (
-    <div className='text-contrast-3' ref={katexTextRef} {...props}>
+    <div className='math-block text-contrast-3' ref={katexTextRef} {...props}>
       {props.children}
     </div>
   );

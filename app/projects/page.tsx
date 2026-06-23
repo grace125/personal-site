@@ -1,11 +1,9 @@
-import Link from "next/link";
 import { JSX, ReactElement } from "react";
-import Pill from "../ui/Pill";
 import BlogEntry from "../ui/component/document/BlogEntry";
-import Section from "../ui/component/sections/Section";
-import Heading from "../ui/component/Heading";
-import P from "../ui/component/Paragraph";
 import A from "../ui/component/Anchor";
+import Card from "../ui/component/Card";
+import { mod } from "../lib/Math";
+import { dbg } from "../lib/Debug";
 
 const tagData = {
     Writing: { 
@@ -88,27 +86,42 @@ const projects: Project[] = [
     //     href: "/projects/free-platformer",
     //     tags: ["Software", "Prototype", "Game Dev"]
     // }
-]
 
-const pill = (content: JSX.Element, color: string) => {
-    return <div className="bg"></div>
-}
+    dbg({ name: "Zine Generator2", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], }),
+    { name: "Zine Generator3", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator4", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator5", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator6", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator7", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator8", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator9", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator10", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+    { name: "Zine Generator11", description: "A tool for generating foldable zine layouts.", href: "/projects/zine-generator", tags: ["Art", "Tool", "Software"], },
+]
 
 export default function Page() {
   return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
-    <Section>
-        {projects.map(project => {
-            return <P hang key={project.name}>
-                <A href={project.href}>{project.name}</A> - {project.description}
-                {/* <br/> */}
-                {/* {project.tags.map(tag => {
-                    const data = tagData[tag]
-                    return <Pill label={tag} key={tag} className={`${data.color}`} />
-                })} */}
-            </P>
-        })}
-    </Section>
-    
-    
+    <div className="mt-[2.1em] space-y-4">
+        {projects.map(project => <ProjectCard key={project.name} {...project} />)}
+    </div>
+
   </BlogEntry>;
 }
+
+const ProjectCard = (p: Project) => <Card key={p.name} className="">
+    <p className="hang-1 m-2"  >
+        <A href={p.href}>{p.name}</A> - {p.description}
+        
+    </p>
+    <div className="flex flex-row content-stretch align-middle justify-end mt-4 m-2 overflow-clip">
+        {p.tags.map((tag, i) => {
+            const data = tagData[tag]
+            return <Pill key={tag} label={tag} color={data.color} className={`${data.color}`} idx={i} />
+        })}
+    </div>
+</Card>
+
+const Pill = (p: { label: string, color: string, className?: string, idx: number} ) => 
+    <div className={`${p.color} p-0 rounded-2xl text-nowrap flex-wrap min-w-fit max-w-[50%] grow text-center animate-flex timeline-view view-25%/75% ${mod(p.idx, 2) === 0 ? "anim-timing-lin" : "anim-timing-linrev"}`}>
+        {p.label}
+    </div>

@@ -48,6 +48,12 @@ class Opt<T = void> implements Pipeable<Opt<T>>, OptLike<T>, ResultLike<T, unkno
 
 	static lift<T>(v: T | OptLike<T>) { return this.isOptionLike(v) ? this.into(v) : this.some(v); }
 
+	*[Symbol.iterator]() {
+		if (this._option.some === true) {
+			yield this._option.v
+		}
+	}
+
 	/** 
 	 * Takes a variadic number of options, and returns a Some with an array of all of the values 
 	 * if they were all Some. Otherwise returns a None.

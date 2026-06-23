@@ -8,10 +8,10 @@
   --contrast-3: color-mix(in oklab, var(--contrast-2) 70%, var(--mode-2) 30%);
   --contrast-4: color-mix(in oklab, var(--contrast-2) 40%, var(--mode-2) 60%);
   --highlight: oklch(90.5% 0.182 98.111); /* yellow-300 */
-  --hyperlink: oklch(54.6% 0.245 262.881); /*blue-600 */
-  --hyperlink-hover: oklch(42.4% 0.199 265.638); /* blue-800 */
-  --hyperlink-visited: oklch(49.6% 0.265 301.924); /* purple-700 */
-  --sidenav-hover: oklch(95.1% 0.026 236.824); /* bg-sky-100 */
+  --hyperlink: var(--color-blue-400); 
+  --hyperlink-hover: var(--color-blue-600); 
+  --hyperlink-visited:  var(--color-purple-500);
+  --sidenav-hover: var(--color-sky-100);
   --err: #ff0000
 }
 
@@ -23,16 +23,14 @@
     --contrast-2: #f7f4e6;
     --contrast-3: color-mix(in oklab, var(--contrast-2) 70%, var(--mode-2) 30%);
     --contrast-4: color-mix(in oklab, var(--contrast-2) 40%, var(--mode-2) 60%);
-    --highlight: oklch(49.6% 0.265 301.924); /* purple-700 */
-    --hyperlink: oklch(70.7% 0.165 254.624); /* blue-400 */
-    --hyperlink-hover: oklch(88.2% 0.059 254.128); /* blue-200 */
-    --hyperlink-visited: oklch(82.7% 0.119 306.383); /* purple-300 */
-    --sidenav-hover: oklch(39.1% 0.09 240.876); /* bg-sky-100 */
+    --highlight: var(--color-purple-700);
+    --hyperlink: var(--color-blue-600);
+    --hyperlink-hover: var(--color-blue-400); 
+    --hyperlink-visited: var(--color-purple-500); 
+    --sidenav-hover: var(--color-sky-900); 
     --err: #00ff00
   }
 }
-
-/* text-blue-600 hover:text-blue-800 visited:text-purple-700 dark:visited:text-purple-300 */
 
 @theme inline {
   --color-mode-1: var(--mode-1);
@@ -47,12 +45,88 @@
   --color-hyperlink-visited: var(--hyperlink-visited);
   --color-sidenav-hover: var(--sidenav-hover);
   --color-err: var(--err);
+
+  --ease-lin: linear;
+  --ease-linrev: linear(1, 0);
+
+  --animate-flex: flexx 100000ms ease-in-out 1;
+  --animate-wiggle: wiggle 1s ease-in-out 1;
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes flexx {
+    0% {
+      flex: 0;
+    }
+    100% {
+      flex: 100;
+    }
+  }
 }
 
+@utility anim-timing-* {
+  animation-timing-function: --value(--ease-*)
+}
+
+@utility timeline-view {
+  animation-timeline: --main-view-timeline;
+}
+
+@utility view-* {
+  view-timeline-inset: --value(percentage, [length], "auto") --modifier(percentage, [length], --default(auto));
+}
+
+@utility timeline-scroll {
+  animation-timeline: --main-scroll-timeline;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-timeline */
+/* Put this on your main page scrollbar for scroll animations */
+@utility set-scroll-timeline-* {
+  scroll-timeline-name: --main-scroll-timeline;
+  scroll-timeline-axis: --value("x", "y");
+}
+
+@utility set-view-timeline-* {
+  view-timeline-name: --main-view-timeline;
+  view-timeline-axis: --value("x", "y", "block", "inline");
+}
+
+@utility indent-* {
+  text-indent: calc(--value(number) * 4ch);
+  text-indent: --value([length]);
+}
+
+@utility hang-* {
+  text-indent: calc(--value(number) * -4ch);
+  padding-left: calc(--value(number) * 4ch);
+  
+  text-indent: calc(--value([length]) * -1);
+  padding-right: --value([length])
+}
 
 
 body {
   background: var(--mode-2);
   color: var(--contrast-2);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+p, div.math-block {
+  font-size: var(--text-xl);
+  color: var(--contrast-3);
+  line-height: 1.4em;
+}
+
+ul, ol {
+  font-size: var(--text-xl);
+  color: var(--contrast-3);
 }
