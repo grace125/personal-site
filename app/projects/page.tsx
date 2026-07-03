@@ -5,9 +5,9 @@ import A from "../ui/component/Anchor";
 import Card from "../ui/component/Card";
 import { clamp } from "../lib/Math";
 import { Heading } from "../ui/component/sections/Section";
-import { CSSProperties, Fragment, MouseEventHandler, useState } from "react";
+import { CSSProperties, Fragment, MouseEventHandler } from "react";
 import { List } from "../lib/datatypes/List";
-import { HashSet } from "../lib/datatypes/HashSet";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const tagData = {
     Writing: { 
@@ -36,7 +36,13 @@ const tagData = {
     }
 }
 
+// TODO: move to lib
+const objectKeys = <T extends {}>(t: T) => {
+    return Object.keys(t) as (keyof typeof t)[]
+}
+
 type Tag = keyof typeof tagData
+const allTags = objectKeys(tagData)
 type TagData = typeof tagData[Tag]
 
 type Project = { name: string, description: string, href: string, tags: List<Tag> } // date: Date
@@ -92,30 +98,46 @@ const projects: List<Project> = List.from([
     // }
 ])
 
+const tagParam = "filterBy"
+
 export default function Page() {
-    const [activeTags, setActiveTags] = useState(HashSet.from<Tag>([]))
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const pathname = usePathname()
+
+    const activeTags = (searchParams.get(tagParam)?.split(",") ?? []) as Tag[]
 
     const onActiveTagClick: MouseEventHandler = e => {
-        const oldTag = (e.target as HTMLElement).innerText as Tag;
-        setActiveTags(activeTags.delete(oldTag))
         e.stopPropagation();
+
+        const tagToRemove = (e.target as HTMLElement).innerText as Tag;
+        const newTags = activeTags.filter(tag => tag !== tagToRemove)
+
+        if (newTags.length === 0) {
+            router.push(pathname)
+        }
+        else {
+            router.push(pathname + `?${tagParam}=${newTags.join(",")}`)
+        }
     }
 
-    const ActiveTags = activeTags.size === 0 
+    const ActiveTags = activeTags.length === 0 
         ? <Fragment key="active-tags" />
         : <p onClick={onActiveTagClick}>
             Filtered by:
-            {activeTags.map(tag => <Pill label={tag} color={tagData[tag].color} className="border-2 border-black"  />)}
+            {activeTags.map(tag => <Pill label={tag} key={tag} color={tagData[tag].color} className="border-2 border-black"  />)}
         </p>
             
 
     const onClick: MouseEventHandler = e => {
-        const newTag = (e.target as HTMLElement).innerText as Tag;
-        setActiveTags(activeTags.add(newTag))
         e.stopPropagation();
+
+        const newTag = (e.target as HTMLElement).innerText as Tag;
+        const newTags = [...activeTags.filter(tag => tag !== newTag), newTag]
+        router.push(pathname + `?${tagParam}=${newTags.join(",")}`)
     }
 
-    const filteredProjects = activeTags.size === 0 
+    const filteredProjects = activeTags.length === 0 
         ? projects
         : projects.filter(proj => activeTags.values().every(tag => proj.tags.find(tag2 => tag === tag2).isSome()))
 
