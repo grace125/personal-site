@@ -108,9 +108,12 @@ export default function Page() {
     const activeTags = (searchParams.get(tagParam)?.split(",") ?? []) as Tag[]
 
     const onActiveTagClick: MouseEventHandler = e => {
+        const target = e.target as HTMLElement
+        if (target.tagName !== 'BUTTON') return
+
         e.stopPropagation();
 
-        const tagToRemove = (e.target as HTMLElement).innerText as Tag;
+        const tagToRemove = target.innerText as Tag;
         const newTags = activeTags.filter(tag => tag !== tagToRemove)
 
         if (newTags.length === 0) {
@@ -130,9 +133,12 @@ export default function Page() {
             
 
     const onClick: MouseEventHandler = e => {
+        const target = e.target as HTMLElement
+        if (target.tagName !== 'BUTTON') return
+
         e.stopPropagation();
 
-        const newTag = (e.target as HTMLElement).innerText as Tag;
+        const newTag = target.innerText as Tag;
         const newTags = [...activeTags.filter(tag => tag !== newTag), newTag]
         router.push(pathname + `?${tagParam}=${newTags.join(",")}`)
     }
@@ -143,7 +149,7 @@ export default function Page() {
 
     return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
         {ActiveTags}
-        <div className="mt-[2.1em] space-y-4 mb-100 perspective-midrange" onClick={onClick} >
+        <div className="mt-[2.1em] space-y-4 mb-10 perspective-midrange" onClick={onClick} >
             {filteredProjects.map(project => <ProjectCard key={project.name} {...project} />)}
         </div>
 
