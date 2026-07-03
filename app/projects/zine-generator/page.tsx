@@ -1,14 +1,13 @@
 'use client';
 
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
 import { ZineEditor } from "@/app/ui/art/ZineEditor";
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Zine Generator">
-            <p className="indent-0">A tool for generating foldable zine layouts.</p>
+        <ProjectEntry title="Zine Generator" description="A tool for generating foldable zine layouts.">
             {/* <PageMarginEditor/> */}
             <ZineEditor />
 
@@ -20,7 +19,6 @@ export default function Page() {
                     Coming soon is the ability to download this file, and (maybe) the ability to upload images and have them placed in the tool.
                 </p>
             </Section>
-            
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }

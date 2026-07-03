@@ -1,5 +1,5 @@
 import A from "@/app/ui/component/Anchor";
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.png';
@@ -8,10 +8,11 @@ import image2 from './image-2.png';
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Microphone Rhythm Game">
-            <p className="indent-0">
-                A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, controlled by a guitar.
-            </p>
+        <ProjectEntry 
+            title="Microphone Rhythm Game" 
+            description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, controlled by a guitar.</>}
+        >
+            
             <Image src={image1} alt="Image of the game" className="my-6" />
 
             <p>
@@ -43,6 +44,6 @@ export default function Page() {
                     But, for what it was, it got the job done.
                 </p>
             </Section>
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }

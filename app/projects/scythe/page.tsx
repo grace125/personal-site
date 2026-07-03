@@ -1,15 +1,15 @@
 import A from "@/app/ui/component/Anchor";
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Math from "@/app/ui/component/Math";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Scythe">
-            <p className="indent-0">
-                A prototype for a dependently typed <A href="https://github.com/grace125/scythe">programming language</A>; my undergrad honours project.
-            </p>
+        <ProjectEntry 
+            title="Scythe" 
+            description={<>A prototype for a dependently typed <A href="https://github.com/grace125/scythe">programming language</A>; my undergrad honours project.</>}
+        >
             
             <p>
                 (Note: this page is under construction. For some more in-depth writing on the topic, you can find the paper I wrote for my project <A href="/Honours_Paper.pdf">here</A>.)
@@ -90,6 +90,6 @@ export default function Page() {
                     If I was to do this project again, I'd probably do an <A href="https://en.wikipedia.org/wiki/ATS_(programming_language)">ATS</A>-style two-level type theory.
                 </p>
             </Section>
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }

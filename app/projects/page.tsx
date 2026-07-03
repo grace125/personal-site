@@ -1,6 +1,6 @@
 "use client";
 
-import BlogEntry from "../ui/component/document/BlogEntry";
+import { Article, ProjectEntry } from "@/app/ui/component/document/Article";
 import A from "../ui/component/Anchor";
 import Card from "../ui/component/Card";
 import { clamp } from "../lib/Math";
@@ -8,6 +8,7 @@ import { Heading } from "../ui/component/sections/Section";
 import { CSSProperties, Fragment, MouseEventHandler, Suspense } from "react";
 import { List } from "../lib/datatypes/List";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { YearMonth } from "../lib/Date";
 
 const tagData = {
     Writing: { 
@@ -45,7 +46,11 @@ type Tag = keyof typeof tagData
 const allTags = objectKeys(tagData)
 type TagData = typeof tagData[Tag]
 
-type Project = { name: string, description: string, href: string, tags: List<Tag> } // date: Date
+type Project = { name: string, description: string, href: string, tags: List<Tag>, date: ProjectDateRange } // date: Date
+
+type ProjectDateRange = 
+    | { type: "done", start: Date, end: Date } 
+    | { type: "ongoing", start: Date }
 
 const projects: List<Project> = List.from([
     { 
@@ -53,24 +58,28 @@ const projects: List<Project> = List.from([
         description: "A tool for generating foldable zine layouts.",
         href: "/projects/zine-generator",
         tags: List.from<Tag>(["Art", "Tool", "Software"]),
+        date: { type: "done", start: new Date(2026, 5), end: new Date(2026, 5) }
     },
     { 
         name: "Scythe", 
         description: "A prototype for a dependently typed programming language, written in Rust; my undergrad honours project.",
         href: "/projects/scythe",
         tags: List.from<Tag>(["Software", "Programming Languages", "Prototype"]),
+        date: { type: "done", start: new Date(2024, 0), end: new Date(2024, 4)}
     },
     {
         name: "Microphone Rhythm Game",
         description: "A rhythm game controlled by a real guitar.",
         href: "/projects/microphone-rhythm-game",
-        tags: List.from<Tag>(["Software", "Music", "Prototype"])
+        tags: List.from<Tag>(["Software", "Music", "Prototype"]),
+        date: { type: "done", start: new Date(2024, 0), end: new Date(2024, 4)}
     },
     {
         name: "Discord Room Manager",
         description: "A Discord bot that uses roles, voice channels, and permissions to simulate rooms in a house.",
         href: "/projects/discord-room-manager",
-        tags: List.from<Tag>(["Software", "Writing", "Prototype"])
+        tags: List.from<Tag>(["Software", "Writing", "Prototype"]),
+        date: { type: "done", start: new Date(2020, 11), end: new Date(2020, 11)}
     },
     // {
     //     name: "Winds of Pilgrimage",
@@ -82,7 +91,8 @@ const projects: List<Project> = List.from([
         name: "JBall",
         description: "A Breakout clone where the ball grows a mouth and starts talking. ",
         href: "/projects/jball",
-        tags: List.from<Tag>(["Software", "Prototype", "Game Dev"])
+        tags: List.from<Tag>(["Software", "Prototype", "Game Dev"]),
+        date: { type: "done", start: new Date(2022, 9), end: new Date(2022, 9) }
     },
     // {
     //     name: "Krampus Launcher",
@@ -101,11 +111,11 @@ const projects: List<Project> = List.from([
 const tagParam = "filterBy"
 
 export default function Page() {
-    return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
+    return <Article title="My Projects:" >
         <Suspense fallback={<p>Loading...</p>}>
             <PageInner />
         </Suspense>
-    </BlogEntry>;
+    </Article>;
 }
 
 function PageInner() {
@@ -167,7 +177,10 @@ function PageInner() {
 
 const ProjectCard = (p: Project) => <Card key={p.name} className="aview aname-card-flip atime-in-out">
     <div className="p-2">
-        <Heading level={2} noleading><A href={p.href}>{p.name}</A></Heading>
+        <div className="flex">
+            <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>
+            <span className="text-contrast-4 text-nowrap">{projectDateRangeToString(p.date)}</span>
+        </div>
         <p className="hang-1 m-2 mt-4 mb-6">{p.description}</p>
         <hr className="h-2 border-t-2"/>
         <div className="flex flex-row-reverse content-stretch align-middle justify-end mt-2 mb-2-mx-2">
@@ -187,4 +200,25 @@ const Pill = (p: { label: string, color: string, className?: string, style?: CSS
     return <button className={`${p.color} px-4 py-0 mx-2 rounded-2xl text-nowrap flex-wrap min-w-fit max-w-[50%] grow text-center ${p.className}`} style={p.style}>
         {p.label}
     </button>
+}
+
+const projectDateRangeToString = (range: ProjectDateRange) => {
+    switch (range.type) {
+        case "done": {
+            const startYearMonth = YearMonth(range.start)
+            const endYearMonth = YearMonth(range.end)
+            if (startYearMonth === endYearMonth) {
+                return startYearMonth
+            }
+            else {
+                return `${startYearMonth} \u2013 ${endYearMonth}`
+            }
+        }
+        case "ongoing": {
+            return `${YearMonth(range.start)} \u2013 Present`
+        }
+        default: {
+            return range
+        }
+    }
 }

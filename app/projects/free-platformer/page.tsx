@@ -1,13 +1,10 @@
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import ItchLink from "@/app/ui/component/ItchLink";
 import Section from "@/app/ui/component/sections/Section";
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 8th, 2026")} title="Super Cool Free Platformer!">
-            <p className="indent-0">
-                A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.
-            </p>
+        <ProjectEntry title="Super Cool Free Platformer!" description={<>A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.</>}>
             <ItchLink id={"2682104"} />
 
             <Section h="Why?">
@@ -45,7 +42,7 @@ export default function Page() {
             </Section>
 
             
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }
 

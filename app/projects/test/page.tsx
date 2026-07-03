@@ -1,13 +1,9 @@
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 
 
 export default function Page() {
-    return <BlogEntry title="Smaller title" author="Grace Schorno" date={new Date("June 7th, 2026")}>
-                
-        <p>
-            JBall is a Breakout clone where the ball grows a mouth and starts talking. 
-        </p>
+    return <ProjectEntry title="Smaller title" description="A Breakout clone where the ball grows a mouth and starts talking." >
 
         <p> This is a test that I am doing</p>
 
@@ -40,7 +36,7 @@ export default function Page() {
             </Section>
         </Section> 
     
-    </BlogEntry>
+    </ProjectEntry>
     
 }
 

@@ -1,13 +1,10 @@
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import ItchLink from "@/app/ui/component/ItchLink";
 import Section from "@/app/ui/component/sections/Section";
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 7th, 2026")} title="J-Ball">
-            <p className="indent-0">
-                JBall is a Breakout clone where the ball grows a mouth and starts talking. 
-            </p>
+        <ProjectEntry title="J-Ball" description="A Breakout clone where the ball grows a mouth and starts talking. ">
 
             <ItchLink id="1378147"></ItchLink>
 
@@ -33,7 +30,7 @@ export default function Page() {
                 <p>Where was I going with this?</p>
                 <p>Oh yeah. But is the game funny? Yes. And that's all I really wanted.</p>
             </Section>
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }
 

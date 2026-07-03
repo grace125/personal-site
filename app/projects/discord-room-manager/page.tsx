@@ -1,15 +1,15 @@
 import A from "@/app/ui/component/Anchor";
-import BlogEntry from "@/app/ui/component/document/BlogEntry";
+import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.gif';
 
 export default function Page() {
     return <>
-        <BlogEntry author="Grace Schorno" date={new Date("June 9th, 2026")} title="Discord Room Manager">
-            <p className="indent-0">
-                A <A href="https://github.com/grace125/discord-room-manager">Discord bot</A> that uses roles, voice channels, and permissions to simulate rooms in a house.
-            </p>
+        <ProjectEntry 
+            title="Discord Room Manager" 
+            description={<>A <A href="https://github.com/grace125/discord-room-manager">Discord bot</A> that uses roles, voice channels, and permissions to simulate rooms in a house.</>}
+        >
             <div className="flex justify-center">
                 <Image src={image1} alt="Example of the Discord Bot in action" className="my-6" />
             </div>
@@ -38,6 +38,6 @@ export default function Page() {
                 </p>
             </Section>
 
-        </BlogEntry>
+        </ProjectEntry>
     </>
 }
