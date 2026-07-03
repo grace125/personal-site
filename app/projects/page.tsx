@@ -5,7 +5,7 @@ import A from "../ui/component/Anchor";
 import Card from "../ui/component/Card";
 import { clamp } from "../lib/Math";
 import { Heading } from "../ui/component/sections/Section";
-import { CSSProperties, Fragment, MouseEventHandler } from "react";
+import { CSSProperties, Fragment, MouseEventHandler, Suspense } from "react";
 import { List } from "../lib/datatypes/List";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -101,6 +101,14 @@ const projects: List<Project> = List.from([
 const tagParam = "filterBy"
 
 export default function Page() {
+    return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
+        <Suspense fallback={<p>Loading...</p>}>
+            <PageInner />
+        </Suspense>
+    </BlogEntry>;
+}
+
+function PageInner() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()
@@ -147,13 +155,14 @@ export default function Page() {
         ? projects
         : projects.filter(proj => activeTags.values().every(tag => proj.tags.find(tag2 => tag === tag2).isSome()))
 
-    return <BlogEntry date={new Date("June 12th, 2026")} author="Grace Schorno" title="My Projects:" >
+    return <>
         {ActiveTags}
         <div className="mt-[2.1em] space-y-4 mb-10 perspective-midrange" onClick={onClick} >
             {filteredProjects.map(project => <ProjectCard key={project.name} {...project} />)}
         </div>
-
-    </BlogEntry>;
+    </>;
+            
+        
 }
 
 const ProjectCard = (p: Project) => <Card key={p.name} className="aview aname-card-flip atime-in-out">
