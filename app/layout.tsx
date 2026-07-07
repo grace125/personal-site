@@ -22,7 +22,7 @@ export default function RootLayout({
       className={`antialiased h-full overflow-clip`}
     >
       <body className={`h-full overflow-clip flex flex-col ${courierPrime.className}`}>
-        <div className="h-full overflow-y-scroll md:scrollbar-auto scroll-smooth md:scroll-auto">
+        <div className="h-full overflow-y-scroll overflow-x-clip md:scrollbar-auto scroll-smooth md:scroll-auto">
           <div className="flex min-h-screen flex-col lg:flex-row text-xl lg:text-lg">
             <SideNav />
             <div className="grow p-6 lg:p-12">
