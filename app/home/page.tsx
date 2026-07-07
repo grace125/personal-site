@@ -1,5 +1,10 @@
 import { Article } from "../ui/component/document/Article";
 import A from "../ui/component/Anchor";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: `Home.`,
+};
 
 export default function Home() {
     return <Article title="Hello!">

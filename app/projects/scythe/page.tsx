@@ -3,6 +3,12 @@ import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Math from "@/app/ui/component/Math";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Scythe",
+  description: "A prototype for a dependently typed programming language; my undergrad honours project.",
+};
 
 export default function Page() {
     return <>

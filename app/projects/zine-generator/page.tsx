@@ -1,9 +1,13 @@
-'use client';
-
 import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
 import { ZineEditor } from "@/app/ui/art/ZineEditor";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Zine Generator",
+  description: "A tool for generating foldable zine layouts.",
+};
 
 export default function Page() {
     return <>

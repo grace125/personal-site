@@ -4,13 +4,18 @@ import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.png';
 import image2 from './image-2.png';
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Microphone Rhythm Game",
+  description: "A rhythm game made for my Music Information Retrieval class, which is controlled by a guitar.",
+};
 
 export default function Page() {
     return <>
         <ProjectEntry 
             title="Microphone Rhythm Game" 
-            description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, controlled by a guitar.</>}
+            description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, which is controlled by a guitar.</>}
         >
             
             <Image src={image1} alt="Image of the game" className="my-6" />

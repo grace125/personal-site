@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import { Article } from "../ui/component/document/Article";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: `About me, Grace Schorno.`,
+};
 
 export default function Page() {
   return <Article title="Who am I?">

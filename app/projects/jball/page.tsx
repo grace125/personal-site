@@ -1,10 +1,16 @@
 import { ProjectEntry } from "@/app/ui/component/document/Article";
 import ItchLink from "@/app/ui/component/ItchLink";
 import Section from "@/app/ui/component/sections/Section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "J-Ball",
+  description: "A Breakout clone where the ball grows a mouth and starts talking.",
+};
 
 export default function Page() {
     return <>
-        <ProjectEntry title="J-Ball" description="A Breakout clone where the ball grows a mouth and starts talking. ">
+        <ProjectEntry title="J-Ball" description="A Breakout clone where the ball grows a mouth and starts talking.">
 
             <ItchLink id="1378147"></ItchLink>
 

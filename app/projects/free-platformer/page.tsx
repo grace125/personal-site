@@ -1,10 +1,16 @@
 import { ProjectEntry } from "@/app/ui/component/document/Article";
 import ItchLink from "@/app/ui/component/ItchLink";
 import Section from "@/app/ui/component/sections/Section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Super Cool Free Platformer!",
+  description: `A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.`,
+};
 
 export default function Page() {
     return <>
-        <ProjectEntry title="Super Cool Free Platformer!" description={<>A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.</>}>
+        <ProjectEntry title="Super Cool Free Platformer!" description={`A tongue-and-cheek "adware" platformer that interrupts the player with a short, fake-ad minigame every 10 seconds.`}>
             <ItchLink id={"2682104"} />
 
             <Section h="Why?">

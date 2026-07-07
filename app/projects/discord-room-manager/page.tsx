@@ -3,6 +3,12 @@ import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.gif';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Discord Room Manager",
+  description: `A Discord bot that uses roles, voice channels, and permissions to simulate rooms in a house.`,
+};
 
 export default function Page() {
     return <>
