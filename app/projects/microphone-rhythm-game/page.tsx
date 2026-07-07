@@ -17,19 +17,15 @@ export default function Page() {
             title="Microphone Rhythm Game" 
             description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, which is controlled by a guitar.</>}
         >
-            
             <Image src={image1} alt="Image of the game" className="my-6" />
-
             <p>
                 Above is the gameplay of the song <i>Sound of Silence</i>. 
                 The layout is similar to tab notation, where each note has a number indicating the tab to hold down, and the column indicates the string.
             </p>
-
             <p>
                 At the time, I thought the notes rising, rather than falling, would make it easier to read, because in English (and most written languages) we read from top to bottom. 
                 But, in retrospect, the notes moving sideways would match the usual direction a guitar is held, and would make it easier to see which note corresponds to which string.
             </p>
-
             <Section h="How Does it Work?">
                 <p>
                     In a separate thread, the microphone takes in data at a rate of (usually greater than or equal to) 44100 samples per second. 

@@ -4,10 +4,10 @@ import A from "../ui/component/Anchor";
 import Card from "../ui/component/Card";
 import { clamp } from "../lib/Math";
 import { Heading } from "../ui/component/sections/Section";
-import { CSSProperties, Fragment, MouseEventHandler } from "react";
+import { CSSProperties, Fragment, MouseEventHandler, ReactNode } from "react";
 import { List } from "../lib/datatypes/List";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { YearMonth } from "../lib/Date";
+import { YearMonthStr } from "../lib/Date";
 
 const tagData = {
     Writing: { 
@@ -33,6 +33,9 @@ const tagData = {
     },
     Tool: {
         color: "bg-yellow-100 hover:bg-yellow-200"
+    },
+    Design: {
+        color: "bg-yellow-100 hover:bg-yellow-200"
     }
 }
 
@@ -45,13 +48,20 @@ type Tag = keyof typeof tagData
 const allTags = objectKeys(tagData)
 type TagData = typeof tagData[Tag]
 
-type Project = { name: string, description: string, href: string, tags: List<Tag>, date: ProjectDateRange } // date: Date
+type Project = { name: string, description: ReactNode, href: string, tags: List<Tag>, date: ProjectDateRange } // date: Date
 
 type ProjectDateRange = 
     | { type: "done", start: Date, end: Date } 
     | { type: "ongoing", start: Date }
 
 const projects: List<Project> = List.from([
+    {
+        name: "Bat-Fish Studio",
+        description: <>A <A href="https://www.batfishstudio.ca/">website</A> I've (re)designed for an eco-friendly sustainable fashion brand</>,
+        href: "/projects/batfish-studio",
+        tags: List.from<Tag>(["Design", "Art", "Software"]),
+        date: { type: "ongoing", start: new Date(2026, 5) }
+    },
     { 
         name: "Zine Generator", 
         description: "A tool for generating foldable zine layouts.",
@@ -197,8 +207,8 @@ const Pill = (p: { label: string, color: string, className?: string, style?: CSS
 const projectDateRangeToString = (range: ProjectDateRange) => {
     switch (range.type) {
         case "done": {
-            const startYearMonth = YearMonth(range.start)
-            const endYearMonth = YearMonth(range.end)
+            const startYearMonth = YearMonthStr(range.start)
+            const endYearMonth = YearMonthStr(range.end)
             if (startYearMonth === endYearMonth) {
                 return startYearMonth
             }
@@ -207,7 +217,7 @@ const projectDateRangeToString = (range: ProjectDateRange) => {
             }
         }
         case "ongoing": {
-            return `${YearMonth(range.start)} \u2013 Present`
+            return `${YearMonthStr(range.start)} \u2013 Present`
         }
         default: {
             return range
