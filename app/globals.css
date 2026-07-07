@@ -16,7 +16,7 @@
   --err: #ff0000
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --mode-1: #000000;
     --mode-2: #393442;
@@ -31,7 +31,7 @@
     --sidenav-hover: var(--color-sky-900); 
     --err: #00ff00
   }
-}
+} */
 
 @theme inline {
   --color-mode-1: var(--mode-1);
