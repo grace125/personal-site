@@ -93,7 +93,7 @@ const projects: List<Project> = List.from([
     {
         name: "Winds of Pilgrimage",
         description: <>A <i>calming</i> puzzle game about exploring an island and solving runic puzzles.</>,
-        href: "/projects/winds-of-pilgrimage",
+        href: "https://medow.itch.io/winds-of-pilgrimage",
         tags: List.from<Tag>(["Software", "Prototype", "Game Dev"]),
         date: { type: "done", start: new Date(2023, 9), end: new Date(2023, 9) }
     },
