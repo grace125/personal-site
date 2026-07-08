@@ -69,6 +69,13 @@ const projects: List<Project> = List.from([
         tags: List.from<Tag>(["Art", "Tool", "Software"]),
         date: { type: "done", start: new Date(2026, 5), end: new Date(2026, 5) }
     },
+    {
+        name: "Launch-a-Krampus",
+        description: `A "turn-based platformer" where you launch Krampus through the air to steal Santa's cookies.`,
+        href: "https://orabidon-games.itch.io/launch-a-krampus",
+        tags: List.from<Tag>(["Software", "Prototype", "Game Dev"]),
+        date: { type: "done", start: new Date(2025, 11), end: new Date(2025, 11) }
+    },
     { 
         name: "Scythe", 
         description: "A prototype for a dependently typed programming language, written in Rust; my undergrad honours project.",
@@ -104,12 +111,6 @@ const projects: List<Project> = List.from([
         tags: List.from<Tag>(["Software", "Writing", "Prototype"]),
         date: { type: "done", start: new Date(2020, 11), end: new Date(2020, 11)}
     },
-    // {
-    //     name: "Krampus Launcher",
-    //     description: "",
-    //     href: "",
-    //     tags: ["Software", "Prototype", "Game Dev"]
-    // },
     // {
     //     name: "Super Cool Free Platformer",
     //     description: "",

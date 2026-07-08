@@ -14,7 +14,7 @@ export default function Page() {
 
             <Section h="Log">
                 <p>This is where I put little updates about my work on the site.</p>
-                <Section h="2026-06-28">
+                <Section h="2026-07-08">
                     <p>
                         Tracy Yerrel, the owner of Bat-Fish Studio, primarily makes her money tabling at events such as artisan fares.
                         She often comes across people who, for some reason or another, can't buy anything right now, but promise to check out her site!
