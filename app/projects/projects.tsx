@@ -74,24 +74,25 @@ const projects: List<Project> = List.from([
         date: { type: "done", start: new Date(2024, 0), end: new Date(2024, 4)}
     },
     {
-        name: "Discord Room Manager",
-        description: "A Discord bot that uses roles, voice channels, and permissions to simulate rooms in a house.",
-        href: "/projects/discord-room-manager",
-        tags: List.from<Tag>(["Software", "Writing", "Prototype"]),
-        date: { type: "done", start: new Date(2020, 11), end: new Date(2020, 11)}
+        name: "Winds of Pilgrimage",
+        description: <>A <i>calming</i> puzzle game about exploring an island and solving runic puzzles.</>,
+        href: "/projects/winds-of-pilgrimage",
+        tags: List.from<Tag>(["Software", "Prototype", "Game Dev"]),
+        date: { type: "done", start: new Date(2023, 9), end: new Date(2023, 9) }
     },
-    // {
-    //     name: "Winds of Pilgrimage",
-    //     description: "",
-    //     href: "",
-    //     tags: ["Software", "Prototype", "Game Dev"]
-    // },
     {
         name: "JBall",
         description: "A Breakout clone where the ball grows a mouth and starts talking. ",
         href: "/projects/jball",
         tags: List.from<Tag>(["Software", "Prototype", "Game Dev"]),
         date: { type: "done", start: new Date(2022, 9), end: new Date(2022, 9) }
+    },
+    {
+        name: "Discord Room Manager",
+        description: "A Discord bot that uses roles, voice channels, and permissions to simulate rooms in a house.",
+        href: "/projects/discord-room-manager",
+        tags: List.from<Tag>(["Software", "Writing", "Prototype"]),
+        date: { type: "done", start: new Date(2020, 11), end: new Date(2020, 11)}
     },
     // {
     //     name: "Krampus Launcher",
