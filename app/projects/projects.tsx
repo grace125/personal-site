@@ -7,7 +7,7 @@ import { Heading } from "../ui/component/sections/Section";
 import { CSSProperties, Fragment, MouseEventHandler, ReactNode } from "react";
 import { List } from "../lib/datatypes/List";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { YearMonthStr } from "../lib/Date";
+import { ShortMonthStr, YearMonthStr } from "../lib/Date";
 
 const tagData = {
     Writing: { 
@@ -208,17 +208,20 @@ const Pill = (p: { label: string, color: string, className?: string, style?: CSS
 const projectDateRangeToString = (range: ProjectDateRange) => {
     switch (range.type) {
         case "done": {
-            const startYearMonth = YearMonthStr(range.start)
-            const endYearMonth = YearMonthStr(range.end)
-            if (startYearMonth === endYearMonth) {
-                return startYearMonth
+            if (range.start.getFullYear() === range.end.getFullYear()) {
+                if (range.start.getMonth() === range.end.getMonth()) {
+                    return YearMonthStr(range.start)
+                }
+                else {
+                    return `${ShortMonthStr(range.start)} \u2013 ${YearMonthStr(range.end)}`
+                }
             }
             else {
-                return `${startYearMonth} \u2013 ${endYearMonth}`
+                return `${YearMonthStr(range.start)} \u2013 ${range.end}`
             }
         }
         case "ongoing": {
-            return `${YearMonthStr(range.start)} \u2013 Present`
+            return `${YearMonthStr(range.start)} \u2013 Now`
         }
         default: {
             return range
