@@ -6,6 +6,12 @@ import image1 from './image-1.png';
 import imageSpreadOut from './image-2.png';
 import imageCondensed from './image-3.png';
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Bat-Fish Studio",
+  description: `A website I've (re)designed for an eco-friendly sustainable fashion brand.`,
+};
 
 export default function Page() {
     return <>

@@ -36,6 +36,9 @@ const tagData = {
     },
     Design: {
         color: "bg-yellow-100 hover:bg-yellow-200"
+    },
+    Story: {
+        color: "bg-yellow-100 hover:bg-yellow-200"
     }
 }
 
@@ -68,6 +71,13 @@ const projects: List<Project> = List.from([
         href: "/projects/zine-generator",
         tags: List.from<Tag>(["Art", "Tool", "Software"]),
         date: { type: "done", start: new Date(2026, 5), end: new Date(2026, 5) }
+    },
+    {
+        name: "It's Not You, It's Me",
+        description: "A comic about a girl who decides to run away from home, but doesn't know why.",
+        href: "/projects/its-not-you-its-me",
+        tags: List.from<Tag>(["Art", "Story"]),
+        date: { type: "done", start: new Date(2026, 0), end: new Date(2026, 4)}
     },
     {
         name: "Launch-a-Krampus",
@@ -182,7 +192,7 @@ const ProjectCard = (p: Project) => <Card key={p.name} className="aview aname-ca
     <div className="p-2">
         <div className="flex">
             <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>
-            <span className="text-contrast-4 text-nowrap">{projectDateRangeToString(p.date)}</span>
+            <span className="text-contrast-4 text-nowrap ml-4">{projectDateRangeToString(p.date)}</span>
         </div>
         <p className="hang-1 m-2 mt-4 mb-6">{p.description}</p>
         <hr className="h-2 border-t-2"/>

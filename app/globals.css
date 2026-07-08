@@ -120,7 +120,7 @@
     0% {
       transform: rotate3d(1, 0, 0, -40deg);
     }
-    20%, 80% {
+    25%, 75% {
       transform: none;
     }
     100% {
