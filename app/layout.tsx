@@ -26,12 +26,14 @@ export default function RootLayout({
     >
       <body className={`h-full overflow-clip flex flex-col ${courierPrime.className}`}>
         <div className="h-full overflow-y-scroll overflow-x-clip md:scrollbar-auto scroll-smooth md:scroll-auto">
-          <div className="flex min-h-screen flex-col lg:flex-row text-xl lg:text-lg">
-            <SideNav />
-            <div className="grow p-6 lg:p-12">
+          <div className="flex min-h-screen flex-col lg:flex-row text-xl">
+            <div className="grow">
+              <SideNav />
+            </div>
+            <div className="shrink p-6 lg:p-12 w-[60ch] relative mx-auto my-0 max-h-full">
               {children}
             </div>
-            <div className="w-full flex-none lg:w-80 shrink-max"></div>
+            <div className="w-full grow shrink-1000000 lg:w-80"></div>
           </div>
         </div>
       </body>

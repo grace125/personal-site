@@ -1,7 +1,5 @@
 import { ProjectEntry } from "@/app/ui/component/document/Article";
-import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
-import A from "@/app/ui/component/Anchor";
 import Image from "next/image";
 import image1 from "./image-01.png"
 import image2 from "./image-02.png"
