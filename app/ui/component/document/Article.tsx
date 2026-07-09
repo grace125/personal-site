@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Section from "../sections/Section";
 
 export const Article = (props: { children?: ReactNode, title: ReactNode }) => {
-  return <article className={`max-w-[60ch] w-auto relative mx-auto my-0 max-h-full`}>
+  return <article>
     <Section h={props.title}>
       {props.children}
     </Section>
