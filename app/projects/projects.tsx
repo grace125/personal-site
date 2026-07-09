@@ -184,16 +184,13 @@ export function ProjectPage() {
             {filteredProjects.map(project => <ProjectCard key={project.name} {...project} />)}
         </div>
     </>;
-            
-        
 }
 
 const ProjectCard = (p: Project) => <Card key={p.name} className="aview aname-card-flip atime-in-out">
     <div className="p-2">
-        <div className="flex">
-            <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>
-            <span className="text-contrast-4 text-nowrap ml-4">{projectDateRangeToString(p.date)}</span>
-        </div>
+        <span className="text-contrast-4 text-nowrap ml-4 float-right">{projectDateRangeToString(p.date)}</span>
+        <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>
+        
         <p className="hang-1 m-2 mt-4 mb-6">{p.description}</p>
         <hr className="h-2 border-t-2"/>
         <div className="flex flex-row-reverse flex-wrap content-stretch align-middle justify-end mt-2 mx-2">
