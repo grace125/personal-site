@@ -116,7 +116,6 @@
   }
 
   @keyframes card-flip {
-    
     0% {
       transform: rotate3d(1, 0, 0, -40deg);
     }
@@ -184,5 +183,5 @@ ul, ol {
 
 * {
   animation-duration: 1ms;
-  animation-fill-mode: forwards;
+  animation-fill-mode: none;
 }

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Section from "../sections/Section";
 
 export const Article = (props: { children?: ReactNode, title: ReactNode }) => {
-  return <article>
+  return <article className="bg-mode-2 p-8 rounded-xl">
     <Section h={props.title}>
       {props.children}
     </Section>
