@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import Section from "../sections/Section";
 
-export const Article = (props: { children?: ReactNode, title: ReactNode }) => {
-  return <article>
+export const Article = (props: { children?: ReactNode, title: ReactNode, className?: string }) => {
+  return <article className={`p-8 rounded-xl relative ${props.className}`}>
     <Section h={props.title}>
       {props.children}
     </Section>

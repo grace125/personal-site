@@ -1,4 +1,4 @@
-import { ProjectEntry } from "@/app/ui/component/document/Article";
+import { ProjectEntry } from "@/app/ui/component/document/Article"
 import _katex from "katex"
 import Image from "next/image";
 import image1 from "./image-01.png"
@@ -6,6 +6,8 @@ import image2 from "./image-02.png"
 import image3 from "./image-03.png"
 import image4 from "./image-04.png"
 import { Metadata } from "next";
+import { BackgroundImage } from "../../ui/component/BackgroundImage";
+import backgroundImage from "../../../public/backgrounds/paper-1.webp";
 
 export const metadata: Metadata = {
   title: "It's Not You, It's Me",
@@ -43,5 +45,6 @@ export default function Page() {
                 I want to make sure I stick the landing.
             </p>
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} z="-z-5000" className="bg-scroll bg-size-[100%] bg-repeat" />
     </>
 }
