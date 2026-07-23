@@ -4,8 +4,6 @@ import "./globals.css";
 import SideNav from '@/app/ui/sidenav';
 import { courierPrime } from "./ui/fonts";
 import "katex";
-import Image from "next/image";
-import backgroundImage from "../public/bg-1.webp"
 
 export const metadata: Metadata = {
   title: {
@@ -27,13 +25,8 @@ export default function RootLayout({
       className={`antialiased h-full overflow-clip`}
     >
       <body className={`h-full overflow-clip flex flex-col ${courierPrime.className}`}>
-        <div className="h-full overflow-y-scroll overflow-x-clip lg:scrollbar-auto scroll-smooth lg:scroll-auto bg-local"
-          style={{
-            backgroundImage: 'var(--bg-image, url("/backgrounds/dots.webp"))',
-            backgroundAttachment: 'var(--bg-attachment, fixed)'
-          }}
-        >
-          <div className="flex min-h-screen flex-col lg:flex-row text-xl">
+        <div className="h-full block overflow-y-auto overflow-x-clip lg:scrollbar-auto scroll-smooth lg:scroll-auto bg-local w-full">
+          <div className="relative min-h-full w-full flex flex-col lg:flex-row text-xl">
             <div className="grow not-lg:flex not-lg:justify-center m-4">
               <SideNav />
             </div>

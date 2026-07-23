@@ -157,7 +157,7 @@ export function ProjectPage() {
 
     const ActiveTags = activeTags.length === 0 
         ? <Fragment key="active-tags" />
-        : <p onClick={onActiveTagClick}>
+        : <p onClick={onActiveTagClick} className="bg-mode-1 rounded-lg border-2 p-2">
             Filtered by:
             {activeTags.map(tag => <Pill label={tag} key={tag} color={tagData[tag].color} className="border-2 border-black mb-2"  />)}
         </p>

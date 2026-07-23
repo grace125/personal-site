@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source inline("animate-{spin,ping,pulse,bounce,flex,wiggle,card-flip}");
+@source inline("animate-{spin,ping,pulse,bounce,flex,wiggle,card-flip,repeating-image-scroll-right}");
 
 :root {
   --mode-1: #ffffff;
@@ -57,6 +57,7 @@
   --animate-flex: flexx 1s ease-in-out 1;
   --animate-wiggle: wiggle 1s ease-in-out 1;
   --animate-card-flip: card-flip 1s ease-in-out 1;
+  --animate-repeating-image-scroll-right: repeating-image-scroll-right 1s linear infinite;
 
   /* Must add to source(inline) at top/make --animate property for it to always work */
   --anim-name-spin: spin;
@@ -126,10 +127,24 @@
       transform: rotate3d(1, 0, 0, 40deg);
     }
   }
+
+  @keyframes repeating-image-scroll-right {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
 }
 
 @utility atime-* {
   animation-timing-function: --value(--ease-*);
+}
+
+@utility adur-* {
+  animation-duration: calc(--value(number) * 1s);
+  animation-duration: calc(--value([*]))
 }
 
 @utility aname-* {
@@ -139,10 +154,12 @@
 @utility aview-* {
   animation-timeline: view();
   view-timeline-inset: --value(percentage, [length], --default(auto)) --modifier(percentage, [length], --default(auto));
+  animation-duration: 1ms;
 }
 
 @utility ascroll-* {
   animation-timeline: scroll(--value("nearest", "root", "self") --modifier("block", "inline", "x", "y", --default(y)));
+  animation-duration: 1ms;
 }
 
 /* Put on the parent of an aview-*
@@ -161,6 +178,10 @@
   
   text-indent: calc(--value([length]) * -1);
   padding-right: --value([length])
+}
+
+@utility clip-path-* {
+  clip-path: --value([*]);
 }
 
 body {
@@ -182,6 +203,5 @@ ul, ol {
 }
 
 * {
-  animation-duration: 1ms;
   animation-fill-mode: none;
 }
