@@ -20,6 +20,6 @@ export default function Page() {
         </p>
         <p>I have a project I'm working on that I'm not ready to talk about, so <i>stay tuned!</i></p>
     </Article>
-    <BackgroundImage src={backgroundImage} scroll className="bg-cover" />
+    <BackgroundImage src={backgroundImage} className="bg-cover" />
     </>;
 }
