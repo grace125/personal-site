@@ -7,6 +7,8 @@ import imageSpreadOut from './image-2.png';
 import imageCondensed from './image-3.png';
 import Image from "next/image";
 import { Metadata } from "next";
+import { BackgroundImage } from "@/app/ui/component/BackgroundImage";
+import backgroundImage from "../../../public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Bat-Fish Studio",
@@ -15,7 +17,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return <>
-        <ProjectEntry title="Bat-Fish Studio" description={<>A <A href="https://www.batfishstudio.ca/">website</A> I've (re)designed for an eco-friendly sustainable fashion brand.</>} >
+        <ProjectEntry 
+            title="Bat-Fish Studio" 
+            description={<>A <A href="https://www.batfishstudio.ca/">website</A> I've (re)designed for an eco-friendly sustainable fashion brand.</>} 
+            className="bg-mode-2"
+        >
             <Image src={image1} alt="Picture of the Bat-Fish Tube*Bella line" className="my-6" />
 
             <Section h="Log">
@@ -79,5 +85,6 @@ export default function Page() {
                 </Section>
             </Section>
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} />
     </>
 }

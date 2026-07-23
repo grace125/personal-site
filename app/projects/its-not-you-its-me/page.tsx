@@ -16,7 +16,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return <>
-        <ProjectEntry title="It's Not You, It's Me" description="A comic about a girl who decides to run away from home, but doesn't know why." >
+        <ProjectEntry 
+            title="It's Not You, It's Me" 
+            description="A comic about a girl who decides to run away from home, but doesn't know why." 
+            className="bg-mode-2"
+        >
             <Image src={image1} alt="Picture of the Bat-Fish Tube*Bella line" className="my-6" />
             <p>
                 My process for making pages like these is a bit unorthodox.
@@ -45,6 +49,6 @@ export default function Page() {
                 I want to make sure I stick the landing.
             </p>
         </ProjectEntry>
-        <BackgroundImage src={backgroundImage} z="-z-5000" className="bg-scroll bg-size-[100%] bg-repeat" />
+        <BackgroundImage src={backgroundImage} z="-z-5000" className="bg-size-[50%] bg-repeat" />
     </>
 }

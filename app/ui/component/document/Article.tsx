@@ -10,8 +10,8 @@ export const Article = (props: { children?: ReactNode, title: ReactNode, classNa
 }
 
 // TODO: make this a layout
-export const ProjectEntry = (props: { children?: ReactNode, title: ReactNode, description: ReactNode }) => {
-  return <Article title={props.title}>
+export const ProjectEntry = (props: { children?: ReactNode, title: ReactNode, description: ReactNode, className?: string }) => {
+  return <Article title={props.title} className={props.className}>
       <p className="indent-0">{props.description}</p>
       {props.children}
   </Article>

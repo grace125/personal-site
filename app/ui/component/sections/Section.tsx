@@ -3,10 +3,10 @@
 import { ReactNode, useContext } from 'react';
 import { LevelContext } from './LevelContext';
 
-export default function Section(props: { children?: ReactNode, h: ReactNode, noleading?: boolean }) {
+export default function Section(props: { children?: ReactNode, h: ReactNode, noleading?: boolean, className?: string }) {
   const level = useContext(LevelContext);
   return (
-    <section className="block [&>p,&>.math-block]:mt-4 [&>h1+p]:indent-0 [&>p,&>.math-block]:indent-1 [&>ul,&>ol]:my-8 [&>ul,&>ol]:pl-[4ch]"> {/*p-5 rounded-sm border*/}
+    <section className={`block [&>p,&>.math-block]:mt-4 [&>h1+p]:indent-0 [&>p,&>.math-block]:indent-1 [&>ul,&>ol]:my-8 [&>ul,&>ol]:pl-[4ch] ${props.className}`}> {/*p-5 rounded-sm border*/}
       <Heading level={level} noleading={props.noleading}>{props.h}</Heading>
       <LevelContext value={level + 1}>
         {props.children}

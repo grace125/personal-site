@@ -1,9 +1,11 @@
 import A from "@/app/ui/component/Anchor";
+import { BackgroundImage } from "@/app/ui/component/BackgroundImage";
 import { ProjectEntry } from "@/app/ui/component/document/Article";
 import Math from "@/app/ui/component/Math";
 import Section from "@/app/ui/component/sections/Section";
 import _katex from "katex"
 import { Metadata } from "next";
+import backgroundImage from "../../../public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Scythe",
@@ -15,6 +17,7 @@ export default function Page() {
         <ProjectEntry 
             title="Scythe" 
             description={<>A prototype for a dependently typed <A href="https://github.com/grace125/scythe">programming language</A>; my undergrad honours project.</>}
+            className="bg-mode-2"
         >
             
             <p>
@@ -97,5 +100,6 @@ export default function Page() {
                 </p>
             </Section>
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} />
     </>
 }

@@ -3,6 +3,8 @@ import { ProjectEntry } from "@/app/ui/component/document/Article";
 import ItchLink from "@/app/ui/component/ItchLink";
 import Section from "@/app/ui/component/sections/Section";
 import { Metadata } from "next";
+import backgroundImage from "../../../public/backgrounds/dots.webp";
+import { BackgroundImage } from "@/app/ui/component/BackgroundImage";
 
 export const metadata: Metadata = {
   title: "J-Ball",
@@ -11,11 +13,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return <>
-        <ProjectEntry title="J-Ball" description="A Breakout clone where the ball grows a mouth and starts talking.">
-
+        <ProjectEntry title="J-Ball" description="A Breakout clone where the ball grows a mouth and starts talking." className="bg-mode-2">
             <ItchLink id="1378147"></ItchLink>
-
-            
             <p>
                 This was one of my earliest game jams. 
                 Its main purpose was to prototype a lip-syncing system in Bevy.
@@ -39,6 +38,7 @@ export default function Page() {
                 </p>
             </Section>
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} />
     </>
 }
 

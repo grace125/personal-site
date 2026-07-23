@@ -5,6 +5,8 @@ import Image from "next/image";
 import image1 from './image-1.png';
 import image2 from './image-2.png';
 import { Metadata } from "next";
+import backgroundImage from "../../../public/backgrounds/dots.webp";
+import { BackgroundImage } from "@/app/ui/component/BackgroundImage";
 
 export const metadata: Metadata = {
   title: "Microphone Rhythm Game",
@@ -16,6 +18,7 @@ export default function Page() {
         <ProjectEntry 
             title="Microphone Rhythm Game" 
             description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, which is controlled by a guitar.</>}
+            className="bg-mode-2"
         >
             <Image src={image1} alt="Image of the game" className="my-6" />
             <p>
@@ -46,5 +49,6 @@ export default function Page() {
                 </p>
             </Section>
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} />
     </>
 }

@@ -186,7 +186,7 @@ export function ProjectPage() {
     </>;
 }
 
-const ProjectCard = (p: Project) => <Card key={p.name} className="aview aname-card-flip atime-in-out">
+const ProjectCard = (p: Project) => <Card key={p.name} className="md:aview md:aname-card-flip md:atime-in-out">
     <div className="p-2">
         <span className="text-contrast-4 text-nowrap ml-4 float-right">{projectDateRangeToString(p.date)}</span>
         <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>

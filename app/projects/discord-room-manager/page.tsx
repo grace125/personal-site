@@ -4,6 +4,8 @@ import Section from "@/app/ui/component/sections/Section";
 import Image from "next/image";
 import image1 from './image-1.gif';
 import { Metadata } from "next";
+import { BackgroundImage } from "../../ui/component/BackgroundImage";
+import backgroundImage from "../../../public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Discord Room Manager",
@@ -15,6 +17,7 @@ export default function Page() {
         <ProjectEntry 
             title="Discord Room Manager" 
             description={<>A <A href="https://github.com/grace125/discord-room-manager">Discord bot</A> that uses roles, voice channels, and permissions to simulate rooms in a house.</>}
+            className="bg-mode-2"
         >
             <div className="flex justify-center">
                 <Image src={image1} alt="Example of the Discord Bot in action" className="my-6" />
@@ -43,7 +46,7 @@ export default function Page() {
                     and there was casual movement between groups, especially people popping in to say hello to the birthday boy. All in all, it was a success!
                 </p>
             </Section>
-
         </ProjectEntry>
+        <BackgroundImage src={backgroundImage} />
     </>
 }
