@@ -18,7 +18,7 @@ export default function Page() {
                 <ProjectPage />
             </Suspense>
         </Article>
-        <BackgroundImage src={backgroundImage} className="bg-repeat bg-size-[1200px] animate-repeating-image-scroll-right adur-100 bg-scroll" />
+        <BackgroundImage src={backgroundImage} className="bg-repeat bg-size-[1200px] animate-scroll-numbers adur-50 bg-scroll" />
         {/* <BackgroundImage src={backgroundImage2} className="bg-repeat bg-size-[2000px] animate-repeating-image-scroll-right adur-100" /> */}
     </>;
 }

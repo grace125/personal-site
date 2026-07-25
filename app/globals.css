@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source inline("animate-{spin,ping,pulse,bounce,flex,wiggle,card-flip,repeating-image-scroll-right}");
+@source inline("animate-{spin,ping,pulse,bounce,flex,wiggle,card-flip,scroll-numbers}");
 
 :root {
   --mode-1: #ffffff;
@@ -57,7 +57,7 @@
   --animate-flex: flexx 1s ease-in-out 1;
   --animate-wiggle: wiggle 1s ease-in-out 1;
   --animate-card-flip: card-flip 1s ease-in-out 1;
-  --animate-repeating-image-scroll-right: repeating-image-scroll-right 1s linear infinite;
+  --animate-scroll-numbers: scroll-numbers 1s linear infinite;
 
   /* Must add to source(inline) at top/make --animate property for it to always work */
   --anim-name-spin: spin;
@@ -128,12 +128,12 @@
     }
   }
 
-  @keyframes repeating-image-scroll-right {
+  @keyframes scroll-numbers {
     0% {
-      background-position: 0% 0%;
+      background-position: 0cqw 0cqw;
     }
     100% {
-      background-position: 100% 100%;
+      background-position: 1200px 381px;
     }
   }
 }
