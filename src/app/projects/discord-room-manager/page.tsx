@@ -5,7 +5,7 @@ import Image from "next/image";
 import image1 from './image-1.gif';
 import { Metadata } from "next";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../../public/backgrounds/dots.webp";
+import backgroundImage from "public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Discord Room Manager",

@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { ProjectPage } from "./projects";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../public/backgrounds/numbers.webp";
+import backgroundImage from "public/backgrounds/numbers.webp";
 
 export const metadata: Metadata = {
   title: "Projects",

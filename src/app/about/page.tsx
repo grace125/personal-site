@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Article } from "@/ui/component/document/Article";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../public/backgrounds/diamonds.webp";
+import backgroundImage from "public/backgrounds/diamonds.webp";
 import A from "@/ui/component/Anchor";
 
 export const metadata: Metadata = {

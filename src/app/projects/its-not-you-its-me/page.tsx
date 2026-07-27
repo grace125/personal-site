@@ -7,7 +7,7 @@ import image3 from "./image-03.png"
 import image4 from "./image-04.png"
 import { Metadata } from "next";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../../public/backgrounds/paper-1.webp";
+import backgroundImage from "public/backgrounds/paper-1.webp";
 
 export const metadata: Metadata = {
   title: "It's Not You, It's Me",

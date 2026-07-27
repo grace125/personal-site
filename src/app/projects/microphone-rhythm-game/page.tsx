@@ -5,7 +5,7 @@ import Image from "next/image";
 import image1 from './image-1.png';
 import image2 from './image-2.png';
 import { Metadata } from "next";
-import backgroundImage from "../../../../public/backgrounds/dots.webp";
+import backgroundImage from "public/backgrounds/dots.webp";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
 
 export const metadata: Metadata = {

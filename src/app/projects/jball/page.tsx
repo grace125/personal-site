@@ -3,7 +3,7 @@ import { ProjectEntry } from "@/ui/component/document/Article";
 import ItchLink from "@/ui/component/ItchLink";
 import Section from "@/ui/component/sections/Section";
 import { Metadata } from "next";
-import backgroundImage from "../../../../public/backgrounds/dots.webp";
+import backgroundImage from "public/backgrounds/dots.webp";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
 
 export const metadata: Metadata = {

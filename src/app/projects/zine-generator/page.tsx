@@ -4,7 +4,7 @@ import _katex from "katex"
 import { ZineEditor } from "@/ui/art/ZineEditor";
 import { Metadata } from "next";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../../public/backgrounds/dots.webp"
+import backgroundImage from "public/backgrounds/dots.webp"
 
 export const metadata: Metadata = {
   title: "Zine Generator",

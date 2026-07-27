@@ -2,7 +2,7 @@ import { Article } from "@/ui/component/document/Article";
 import A from "@/ui/component/Anchor";
 import { Metadata } from "next";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../public/backgrounds/squares.webp";
+import backgroundImage from "public/backgrounds/squares.webp";
 
 export const metadata: Metadata = {
 

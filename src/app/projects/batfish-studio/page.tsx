@@ -8,7 +8,7 @@ import imageCondensed from './image-3.png';
 import Image from "next/image";
 import { Metadata } from "next";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
-import backgroundImage from "../../../../public/backgrounds/dots.webp";
+import backgroundImage from "public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Bat-Fish Studio",

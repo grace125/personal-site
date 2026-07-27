@@ -5,7 +5,7 @@ import Math from "@/ui/component/Math";
 import Section from "@/ui/component/sections/Section";
 import _katex from "katex"
 import { Metadata } from "next";
-import backgroundImage from "../../../../public/backgrounds/dots.webp";
+import backgroundImage from "public/backgrounds/dots.webp";
 
 export const metadata: Metadata = {
   title: "Scythe",
