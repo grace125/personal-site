@@ -17,6 +17,6 @@ export default function Page() {
                 <ProjectPage />
             </Suspense>
         </Article>
-        <BackgroundImage src={backgroundImage} className="bg-repeat bg-size-[1200px] animate-scroll-numbers adur-50 bg-scroll" />
+        <BackgroundImage fixed src={backgroundImage} className="bg-repeat bg-size-[1200px] animate-scroll-numbers adur-50 bg-scroll" />
     </>;
 }

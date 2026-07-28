@@ -39,6 +39,6 @@ export default function Page() {
         </p>
         <p>Have a good day!</p>
     </Article>
-    <BackgroundImage src={backgroundImage} className="bg-cover" />
+    <BackgroundImage src={backgroundImage} className="bg-repeat" />
     </>;
 }

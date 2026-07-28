@@ -20,6 +20,6 @@ export default function Home() {
         <p>If you're looking for any of my <b>projects</b>, I'd recommend you head <A href="/projects">here</A>, and if you want to know more about <b>me</b> I'd suggest you go <A href="/about">here</A>!</p>
         <p>Have a great day!</p>
       </Article>
-      <BackgroundImage src={backgroundImage} z="-z-5000" className="bg-cover" />
+      <BackgroundImage src={backgroundImage} z="-z-5000" className="bg-repeat" />
     </>
 }

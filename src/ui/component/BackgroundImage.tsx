@@ -7,6 +7,7 @@ export type BackgroundImageProps = {
     z?: `${"-" | ""}z-${number}`
     className?: string
     alt?: string
+    fixed?: boolean
 }
 
 export function BackgroundImage(props: BackgroundImageProps) {
@@ -20,7 +21,7 @@ export function BackgroundImage(props: BackgroundImageProps) {
     })
 
     return <div 
-        className={`inset-0 absolute min-h-full w-full ${props.z ?? "-z-1000"} ${props.className ?? ""}`} 
+        className={`inset-0 min-h-full w-full ${props.fixed ? "fixed" : "absolute"} ${props.z ?? "-z-1000"} ${props.className ?? ""}`} 
         style={{ backgroundImage: `url(${image.src})` }}
     />
 }
