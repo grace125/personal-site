@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
-    { name: "home", href: "/home", icon: HomeIcon },
+    // { name: "home", href: "/home", icon: HomeIcon },
+    { name: "about", href: "/about", icon: InformationCircleIcon },
     { name: "projects", href: "/projects", icon: RocketLaunchIcon},
-    { name: "about", href: "/about", icon: InformationCircleIcon }
+    
 ]
 
 export default function SideNav() {
