@@ -1,7 +1,7 @@
 import { ProjectEntry } from "@/ui/component/document/Article";
 import Section from "@/ui/component/sections/Section";
 import _katex from "katex"
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import image1 from './image-1.png';
 import imageSpreadOut from './image-2.png';
 import imageCondensed from './image-3.png';
@@ -19,7 +19,7 @@ export default function Page() {
     return <>
         <ProjectEntry 
             title="Bat-Fish Studio" 
-            description={<>A <A href="https://www.batfishstudio.ca/">website</A> I've (re)designed for an eco-friendly sustainable fashion brand.</>} 
+            description={<>A <Link href="https://www.batfishstudio.ca/">website</Link> I've (re)designed for an eco-friendly sustainable fashion brand.</>} 
             className="bg-mode-2"
         >
             <Image src={image1} alt="Picture of the Bat-Fish Tube*Bella line" className="my-6" />

@@ -1,4 +1,4 @@
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import { ProjectEntry } from "@/ui/component/document/Article";
 import Section from "@/ui/component/sections/Section";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function Page() {
     return <>
         <ProjectEntry 
             title="Discord Room Manager" 
-            description={<>A <A href="https://github.com/grace125/discord-room-manager">Discord bot</A> that uses roles, voice channels, and permissions to simulate rooms in a house.</>}
+            description={<>A <Link href="https://github.com/grace125/discord-room-manager">Discord bot</Link> that uses roles, voice channels, and permissions to simulate rooms in a house.</>}
             className="bg-mode-2"
         >
             <div className="flex justify-center">

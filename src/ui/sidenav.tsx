@@ -1,6 +1,6 @@
 'use client';
 
-import { InformationCircleIcon, HomeIcon, RocketLaunchIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
+import { InformationCircleIcon, RocketLaunchIcon, } from '@heroicons/react/24/outline' // HomeIcon,
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -11,7 +11,7 @@ const links = [
 ]
 
 export default function SideNav() {
-    let path = usePathname()
+    const path = usePathname()
     // TODO: try max-w-[60ch]
     return <div className="max-w-[60ch] grow lg:float-right lg:sticky lg:top-4 lg:right-4 lg:w-86 block overflow-auto rounded-md bg-mode-1 border-2 border-dashed border-contrast-2 lg:border-r-2" >
         {links.map((link) => {

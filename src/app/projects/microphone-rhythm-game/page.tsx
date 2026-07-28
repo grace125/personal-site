@@ -1,4 +1,4 @@
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import { ProjectEntry } from "@/ui/component/document/Article";
 import Section from "@/ui/component/sections/Section";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function Page() {
     return <>
         <ProjectEntry 
             title="Microphone Rhythm Game" 
-            description={<>A <A href="https://github.com/grace125/csc475_project">rhythm game</A> made for my Music Information Retrieval class, which is controlled by a guitar.</>}
+            description={<>A <Link href="https://github.com/grace125/csc475_project">rhythm game</Link> made for my Music Information Retrieval class, which is controlled by a guitar.</>}
             className="bg-mode-2"
         >
             <Image src={image1} alt="Image of the game" className="my-6" />

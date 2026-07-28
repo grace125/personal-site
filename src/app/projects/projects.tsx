@@ -1,6 +1,6 @@
 "use client";
 
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import Card from "@/ui/component/Card";
 import { clamp } from "@/lib/Math";
 import { Heading } from "@/ui/component/sections/Section";
@@ -60,7 +60,7 @@ type ProjectDateRange =
 const projects: List<Project> = List.from([
     {
         name: "Bat-Fish Studio",
-        description: <>A <A href="https://www.batfishstudio.ca/">website</A> I've (re)designed for an eco-friendly sustainable fashion brand</>,
+        description: <>A <Link href="https://www.batfishstudio.ca/">website</Link> I've (re)designed for an eco-friendly sustainable fashion brand</>,
         href: "/projects/batfish-studio",
         tags: List.from<Tag>(["Design", "Art", "Software"]),
         date: { type: "ongoing", start: new Date(2026, 5) }
@@ -189,7 +189,7 @@ export function ProjectPage() {
 const ProjectCard = (p: Project) => <Card key={p.name} className="md:aview md:aname-card-flip md:atime-in-out">
     <div className="p-2">
         <span className="text-contrast-4 text-nowrap ml-4 float-right">{projectDateRangeToString(p.date)}</span>
-        <Heading level={2} noleading className="grow"><A href={p.href}>{p.name}</A></Heading>
+        <Heading level={2} noleading className="grow"><Link href={p.href}>{p.name}</Link></Heading>
         
         <p className="hang-1 m-2 mt-4 mb-6">{p.description}</p>
         <hr className="h-2 border-t-2"/>

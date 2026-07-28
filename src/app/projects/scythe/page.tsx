@@ -1,4 +1,4 @@
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
 import { ProjectEntry } from "@/ui/component/document/Article";
 import Math from "@/ui/component/Math";
@@ -16,17 +16,17 @@ export default function Page() {
     return <>
         <ProjectEntry 
             title="Scythe" 
-            description={<>A prototype for a dependently typed <A href="https://github.com/grace125/scythe">programming language</A>; my undergrad honours project.</>}
+            description={<>A prototype for a dependently typed <Link href="https://github.com/grace125/scythe">programming language</Link>; my undergrad honours project.</>}
             className="bg-mode-2"
         >
             
             <p>
-                (Note: this page is under construction. For some more in-depth writing on the topic, you can find the paper I wrote for my project <A href="/Honours_Paper.pdf">here</A>.)
+                (Note: this page is under construction. For some more in-depth writing on the topic, you can find the paper I wrote for my project <Link href="/Honours_Paper.pdf">here</Link>.)
             </p>
 
             <Section h="What is a Dependent Type?">
                 <p>
-                    A dependent type, put simply, is a type that depends on a value. There are many kinds of dependent types, such as <A href="https://en.wikipedia.org/wiki/Generalized_algebraic_data_type">GADTs</A>, but <u>consider the following function f:</u>
+                    A dependent type, put simply, is a type that depends on a value. There are many kinds of dependent types, such as <Link href="https://en.wikipedia.org/wiki/Generalized_algebraic_data_type">GADTs</Link>, but <u>consider the following function f:</u>
                 </p>
 
                 <Math>{"$$\\func{(b\\is \\type{Bool})}{\\ifthenelse{b}{5}{\\str{hi}}}$$"}</Math>
@@ -96,7 +96,7 @@ export default function Page() {
                 </p>
 
                 <p>
-                    If I was to do this project again, I'd probably do an <A href="https://en.wikipedia.org/wiki/ATS_(programming_language)">ATS</A>-style two-level type theory.
+                    If I was to do this project again, I'd probably do an <Link href="https://en.wikipedia.org/wiki/ATS_(programming_language)">ATS</Link>-style two-level type theory.
                 </p>
             </Section>
         </ProjectEntry>

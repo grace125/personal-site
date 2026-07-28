@@ -1,4 +1,4 @@
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 import { ProjectEntry } from "@/ui/component/document/Article";
 import ItchLink from "@/ui/component/ItchLink";
 import Section from "@/ui/component/sections/Section";
@@ -30,7 +30,7 @@ export default function Page() {
                     In particular, a full day of time, for one file.
                 </p>
                 <p>
-                    If I was to do this project over, I would have made a system similar to what <A href="https://www.twitch.tv/tomthinks">Tom Thinks</A> has on Twitch, where each movement of the mouth is controlled <i>as the speaker talks</i>.
+                    If I was to do this project over, I would have made a system similar to what <Link href="https://www.twitch.tv/tomthinks">Tom Thinks</Link> has on Twitch, where each movement of the mouth is controlled <i>as the speaker talks</i>.
                     This would have saved me leagues of time, and let me work on adding a proper game over state.
                 </p>
                 <p>

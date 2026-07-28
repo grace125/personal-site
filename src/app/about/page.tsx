@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Article } from "@/ui/component/document/Article";
 import { BackgroundImage } from "@/ui/component/BackgroundImage";
 import backgroundImage from "public/backgrounds/diamonds.webp";
-import A from "@/ui/component/Anchor";
+import Link from "@/ui/component/Link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -19,7 +19,7 @@ export default function Page() {
         <p>
           In particular, I love <b>games</b>, and <b>game development</b>! 
           I've done over 10 game jams, nd I've been slowly uploading them here, as well as other related side projects.
-          Click <A href="/projects">here</A> to see what I have up so far.
+          Click <Link href="/projects">here</Link> to see what I have up so far.
         </p>
         <p>
           When I work on solo projects, I tend to use Bevy. 
@@ -29,7 +29,7 @@ export default function Page() {
         <p>
           I'm also a programming language nut! 
           For my undergraduate honours project, I made a prototype for a dependently typed programming language in Rust.
-          See <A href="/projects/scythe">here</A> for that.
+          See <Link href="/projects/scythe">here</Link> for that.
           It's quite rough around the edges, but I've been considering starting over on a sequent calulus-based language. 
           I still need to do more research.
         </p>

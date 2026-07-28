@@ -13,6 +13,19 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "@typescript-eslint/no-restricted-types": [
+        "error",
+        
+        {
+          "types": {
+            "next.link": "Don't use this"
+          }
+        }
+      ]
+    }
+  }
 ]);
 
 export default eslintConfig;

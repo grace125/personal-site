@@ -2,6 +2,7 @@ import { ProjectEntry } from "@/ui/component/document/Article";
 import ItchLink from "@/ui/component/ItchLink";
 import Section from "@/ui/component/sections/Section";
 import { Metadata } from "next";
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Super Cool Free Platformer!",
