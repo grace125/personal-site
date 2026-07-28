@@ -8,7 +8,6 @@ const links = [
     // { name: "home", href: "/home", icon: HomeIcon },
     { name: "about", href: "/about", icon: InformationCircleIcon },
     { name: "projects", href: "/projects", icon: RocketLaunchIcon},
-    
 ]
 
 export default function SideNav() {

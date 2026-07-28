@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "Stuff that I've worked on.",
 };
 
+// TODO: add images in project page for each project
+
 export default function Page() {
     return <>
         <Article title="My Projects:" >

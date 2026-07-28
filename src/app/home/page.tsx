@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 export default function Home() {
   redirect("/about", "replace")
   return <>
-
-    
     <Article title="Hello!" className="bg-mode-2">
       <p>
         This is my website! It's a work in progress, but I have big plans for it.

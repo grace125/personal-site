@@ -30,8 +30,8 @@ export default function Page() {
           I'm also a programming language nut! 
           For my undergraduate honours project, I made a prototype for a dependently typed programming language in Rust.
           See <A href="/projects/scythe">here</A> for that.
-          It's quite rough around the edges, but I've been considerign startn gover on a sequent calulus-based language. 
-          I still need to do more research first.
+          It's quite rough around the edges, but I've been considering starting over on a sequent calulus-based language. 
+          I still need to do more research.
         </p>
         <p>
           Expect in the next couple of weeks for a blog to appear here.
